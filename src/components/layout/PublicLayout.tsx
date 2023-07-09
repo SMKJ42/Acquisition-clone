@@ -28,7 +28,7 @@ export const PublicLayout = ({ children }: { children: ReactNode }) => {
       </Head>
       <PublicNavigation dropDown={dropDown} setDropDown={setDropDown} />
       <main
-        className="flex min-h-screen flex-col items-center "
+        className="flex flex-col items-center "
         onMouseEnter={() => setDropDown(false)}
       >
         <div className="page h-[calc(100vh-13rem)] w-full bg-texture">

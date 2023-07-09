@@ -156,11 +156,16 @@ function SubNavButton(props: { parent: string; child: string }) {
   const router = useRouter();
   const { parent, child } = props;
   const parentLower = parent.toLowerCase();
-  const childLower = child.toLowerCase().replace(" ", "_");
+  const childLower = child.toLowerCase().replace(/\s/g, "_");
+
+  console.log(parentLower, childLower);
 
   return (
-    <div onClick={() => void router.push(`/${parentLower}/${childLower}`)}>
-      {child}
+    <div
+      onClick={() => void router.push(`/${parentLower}/${childLower}`)}
+      className="border-l border-r border-t px-4 py-1 last:border-b hover:cursor-pointer"
+    >
+      <p className="hover:text-primary-300 hover:underline">{child}</p>
     </div>
   );
 }
