@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <footer className="footer-container absolute bottom-0 flex h-32 w-full items-center justify-center gap-12 bg-primary-200 px-4 py-8">
+    <footer className="footer-container flex h-32 w-full items-center justify-center gap-12 bg-primary-200 px-4 py-8">
       <h4 className="ml-10 text-3xl font-extrabold tracking-tight text-white">
         ACQUISITION.COM
       </h4>

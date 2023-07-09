@@ -1,17 +1,12 @@
-import type { ReactElement } from "react";
-import type { NextPageWithLayout } from "../_app";
-import { PublicLayout } from "~/components/layout/PublicLayout";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-const TheFirm: NextPageWithLayout = () => {
-  return (
-    <h2 className="">
-      DO YOU WANT TO <span>SCALE YOUR BUSINESS</span>?<br />
-    </h2>
-  );
-};
-
-TheFirm.getLayout = function getLayout(page: ReactElement) {
-  return <PublicLayout>{page}</PublicLayout>;
+const TheFirm = () => {
+  const router = useRouter();
+  useEffect(() => {
+    return void router.push("/the_team");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };
 
 export default TheFirm;

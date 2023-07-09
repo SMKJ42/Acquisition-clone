@@ -1,4 +1,3 @@
-import { Public } from "@prisma/client/runtime";
 import Head from "next/head";
 import { PublicNavigation } from "./PublicNavigation";
 import { Footer } from "./Footer";
@@ -26,12 +25,15 @@ export const PublicLayout = ({ children }: { children: ReactNode }) => {
         <meta name="Description" content={`Acquision.com ${page}`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <PublicNavigation dropDown={dropDown} setDropDown={setDropDown} />
       <main
-        className="flex flex-col items-center "
+        className="flex flex-col items-center"
         onMouseEnter={() => setDropDown(false)}
       >
-        <div className="page h-[calc(100vh-13rem)] w-full bg-texture">
+        <PublicNavigation dropDown={dropDown} setDropDown={setDropDown} />
+        <div
+          className="page mt-20 min-h-[calc(100vh-13rem)] w-full bg-texture"
+          onMouseEnter={() => setDropDown(false)}
+        >
           {children}
         </div>
       </main>

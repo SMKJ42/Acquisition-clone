@@ -8,7 +8,7 @@ export default {
         "primary-100": "#131628",
         "primary-200": "#6f00ff",
         "primary-300": "#CBA4FF",
-        texture: "#FAF9F6",
+        texture: "#F6F5F2",
       },
     },
   },
