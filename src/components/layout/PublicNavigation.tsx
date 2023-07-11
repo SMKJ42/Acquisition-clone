@@ -18,9 +18,9 @@ export const PublicNavigation = (props: {
   const { dropDown, setDropDown } = props;
 
   return (
-    <nav className="nav fixed flex h-20 w-full  items-center bg-primary-100 sm:flex-col">
+    <nav className="nav fixed h-20 w-full bg-primary-100  text-center sm:flex sm:flex-col">
       <div
-        className="flex w-full justify-center "
+        className="bg-primary-00 z-40 mt-1 flex w-full justify-center"
         onMouseEnter={() => setDropDown(false)}
       >
         <Image
@@ -42,71 +42,381 @@ export const PublicNavigation = (props: {
 };
 
 function SubNavButton(props: { parent: string; child: string }) {
-  const router = useRouter();
   const { parent, child } = props;
   const parentLower = parent.toLowerCase();
   const childLower = child.toLowerCase().replace(/\s/g, "_");
 
   return (
-    <div
-      onClick={() => void router.push(`/${parentLower}/${childLower}`)}
-      className="border-l border-r border-t px-4 py-1 last:border-b hover:cursor-pointer"
-    >
-      <p className="hover:text-primary-300 hover:underline">{child}</p>
+    <div className="border-l border-r border-t px-4 py-1 last:border-b hover:cursor-pointer">
+      <Link
+        href={`/${parentLower}/${childLower}`}
+        className="hover:text-primary-300 hover:underline"
+      >
+        {child}
+      </Link>
     </div>
   );
 }
 
+function MiniSubNavButton(props: {
+  parent: string;
+  child: string;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const { parent, child, setOpen } = props;
+  const parentLower = parent.toLowerCase();
+  const childLower = child.toLowerCase().replace(/\s/g, "_");
+
+  return (
+    <div className="px-4 py-1 text-sm font-thin hover:cursor-pointer">
+      <Link
+        onClick={() => {
+          setOpen(false);
+        }}
+        href={`/${parentLower}/${childLower}`}
+        className="hover:text-primary-300 hover:underline"
+      >
+        {child}
+      </Link>
+    </div>
+  );
+}
 // *************** MOBILE NAVIGATION *****************
 
 function Mobile(props: {
   setDropDown: React.Dispatch<React.SetStateAction<string | boolean>>;
   dropDown: string | boolean;
 }) {
-  const router = useRouter();
   const { setDropDown, dropDown } = props;
 
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="sm:hidden">
+    <div className={`w-full sm:hidden ${!open ? "absolute top-0" : ""} `}>
       {!open && (
-        <div className="pr-8 text-white" onClick={() => setOpen(true)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="h-12 w-10"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </div>
-      )}
-      {open && (
-        <div className="absolute bottom-0 top-0 h-full w-full bg-primary-200">
-          <div className="pr-8 text-white" onClick={() => setOpen(false)}>
+        <div className="flex w-full justify-end pr-8 text-white">
+          <div onClick={() => setOpen(true)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth={2}
               stroke="currentColor"
               className="h-12 w-10"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
             </svg>
-            <div>TODO</div>
           </div>
+        </div>
+      )}
+      {open && (
+        // <div className="absolute top-0 flex h-fit w-full justify-center bg-primary-200">
+        <div className="absolute top-0 flex h-fit w-full justify-center bg-primary-200">
+          <div className="flex flex-1" onMouseOver={() => setDropDown(false)} />
+          <div className="flex w-fit flex-col items-center text-white">
+            <div onClick={() => setOpen(false)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="h-12 w-10"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+
+            {/*
+             * BOOKS
+             */}
+
+            <div
+              className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
+              onMouseOver={() => {
+                // if (!dropDown && dropDown !== "books") {
+                // setDropDown(false);
+                // } else return;
+              }}
+              onClick={() => setDropDown("books")}
+            >
+              <div className="flex w-full justify-center">
+                <Link href="/books" onClick={() => setOpen(false)}>
+                  Books
+                </Link>
+                {bookOptions.length !== 0 && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                )}
+              </div>
+              {dropDown === "books" && (
+                <div className="mt-2 w-full text-start">
+                  {bookOptions.map((option) => (
+                    <MiniSubNavButton
+                      setOpen={setOpen}
+                      key={option}
+                      parent="books"
+                      child={option}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/*
+             * Courses
+             */}
+            <div
+              className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
+              onMouseOver={() => {
+                // if (dropDown && dropDown !== "courses") {
+                // setDropDown(false);
+                // } else return;
+              }}
+              onClick={() => setDropDown("courses")}
+            >
+              <div className="flex w-full justify-center">
+                <Link href="/courses" onClick={() => setOpen(false)}>
+                  Courses
+                </Link>
+                {courseOptions.length !== 0 && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                )}
+              </div>
+              {dropDown === "courses" && (
+                <div className="mt-2 w-full text-start">
+                  {courseOptions.map((option) => (
+                    <MiniSubNavButton
+                      setOpen={setOpen}
+                      key={option}
+                      parent="courses"
+                      child={option}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/*
+             * Partnership
+             */}
+            <div
+              className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
+              onMouseOver={() => {
+                // if (dropDown && dropDown !== "partnership") {
+                // setDropDown(false);
+                // } else return;
+              }}
+              onClick={() => setDropDown("partnership")}
+            >
+              <div className="flex w-full justify-center">
+                <Link href="/partnership" onClick={() => setOpen(false)}>
+                  Partnership
+                </Link>
+                {partnershipOptions.length !== 0 && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                )}
+              </div>
+              {dropDown === "partnership" && (
+                <div className="mt-2 w-full text-start">
+                  {partnershipOptions.map((option) => (
+                    <MiniSubNavButton
+                      setOpen={setOpen}
+                      key={option}
+                      parent="partnership"
+                      child={option}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/*
+             * Speaking
+             */}
+            <div
+              className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
+              onMouseOver={() => {
+                // if (dropDown && dropDown !== "speaking") {
+                // setDropDown(false);
+                // } else return;
+              }}
+              onClick={() => setDropDown("speaking")}
+            >
+              <div className="flex w-full justify-center">
+                <Link href="/speaking" onClick={() => setOpen(false)}>
+                  Speaking
+                </Link>
+                {speakingOptions.length !== 0 && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                )}
+              </div>
+              {dropDown === "speaking" && (
+                <div className="mt-2 w-full text-start">
+                  {speakingOptions.map((option) => (
+                    <MiniSubNavButton
+                      setOpen={setOpen}
+                      key={option}
+                      parent="speaking"
+                      child={option}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/*
+             * The Firm
+             */}
+            <div className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline">
+              <div className="flex w-full justify-center">
+                <button
+                  onMouseOver={() => {
+                    // if (dropDown && dropDown !== "the_firm") {
+                    // setDropDown(false);
+                    // } else return;
+                  }}
+                  onClick={() => setDropDown("the_firm")}
+                >
+                  The Firm
+                </button>
+                {theFirmOptions.length !== 0 && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                )}
+              </div>
+              {dropDown === "the_firm" && (
+                <div className="mt-2 w-full text-start">
+                  {theFirmOptions.map((option) => (
+                    <MiniSubNavButton
+                      setOpen={setOpen}
+                      key={option}
+                      parent="the_firm"
+                      child={option}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/*
+             * Careers
+             */}
+            <div className="my-2 inline w-full whitespace-nowrap underline-offset-2 hover:underline">
+              <div className="flex w-full justify-center">
+                <button
+                  onMouseOver={() => {
+                    // if (dropDown && dropDown !== "the_firm") {
+                    // setDropDown(false);
+                    // } else return;
+                  }}
+                  onClick={() => setDropDown("careers")}
+                >
+                  Careers
+                </button>
+                {careerOptions.length !== 0 && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                )}
+              </div>
+              {dropDown === "careers" && (
+                <div className="mt-2 w-full text-start">
+                  {careerOptions.map((option) => (
+                    <MiniSubNavButton
+                      setOpen={setOpen}
+                      key={option}
+                      parent="careers"
+                      child={option}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-1" onMouseOver={() => setDropDown(false)} />
         </div>
       )}
     </div>
@@ -119,8 +429,6 @@ function Desktop(props: {
   setDropDown: React.Dispatch<React.SetStateAction<string | boolean>>;
   dropDown: string | boolean;
 }) {
-  const router = useRouter();
-
   const { setDropDown, dropDown } = props;
 
   return (
@@ -248,12 +556,7 @@ function Desktop(props: {
         className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
         onMouseEnter={() => setDropDown("careers")}
       >
-        <Link
-          href="/careers"
-          onClick={() => void router.push("/careers/open_jobs")}
-        >
-          Careers
-        </Link>
+        <Link href="/careers/open_jobs">Careers</Link>
         {dropDown === "careers" && (
           <div className="absolute flex flex-1 flex-col bg-primary-200">
             {careerOptions.map((option) => (

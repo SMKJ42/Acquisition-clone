@@ -40,7 +40,7 @@ const OpenJobs: NextPageWithLayout = () => {
         </h1>
       </div>
       <GreatPlaceToWork />
-      <div className="my-8 flex w-full flex-col items-center md:flex-row">
+      <div className="my-10 flex w-full flex-col items-center sm:mb-16 md:flex-row">
         <div className="mb-4 flex w-1/2 flex-col justify-around text-center sm:w-full sm:flex-row md:mb-0">
           <label className="text-bold flex flex-col">
             Filter by Department

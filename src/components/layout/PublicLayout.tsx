@@ -21,7 +21,7 @@ export const PublicLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Head>
-        <title>Acquisition.com</title>
+        <title className="mt-2">Acquisition.com</title>
         <meta name="Description" content={`Acquision.com ${page}`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
