@@ -245,15 +245,13 @@ const Speaking: NextPageWithLayout = () => {
 
             <div className="w-full sm:col-span-2">
               <label className="flex w-full flex-col items-center">
-                <span className="pb-2 text-lg font-bold">Day of Event *</span>
+                <span className="w-3/4 rounded-md border-[1px] border-primary-300 bg-gray-100 p-1 pb-2 text-lg font-bold ">
+                  Day of Event *
+                </span>
                 <input type="date" />
               </label>
             </div>
 
-            <div>
-              <span>Date of Event / Speaking Engagement? *</span>
-              <input type="date"></input>
-            </div>
             <div className="flex w-full flex-col items-center sm:col-span-2">
               <div className="my-8 h-[5px] w-[80px] bg-primary-200"></div>
             </div>
