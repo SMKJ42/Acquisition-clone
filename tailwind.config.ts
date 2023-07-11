@@ -10,6 +10,10 @@ export default {
         "primary-300": "#CBA4FF",
         texture: "#F6F5F2",
       },
+      backgroundImage: {
+        "great-place-to-work":
+          "url('/images/milad-fakurian-PGdW_bHDbpI-unsplash.jpg')",
+      },
     },
   },
   plugins: [],

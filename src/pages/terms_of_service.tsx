@@ -1,0 +1,285 @@
+import { useRouter } from "next/router";
+import type { NextPageWithLayout } from "./_app";
+import type { ReactElement } from "react";
+import { PublicLayout } from "~/components/layout/PublicLayout";
+
+const terms_of_service = [
+  `  IMPORTANT – PLEASE CAREFULLY READ AND UNDERSTAND THESE TERMS OF USE BEFORE ACCESSING, USING, OR SUBSCRIBING OVER Acquisition.com. THESE TERMS CONTAIN DISCLAIMERS OF WARRANTIES AND LIMITATIONS OF LIABILITIES (see Sections 6, 9 and 10). THESE TERMS FORM AN ESSENTIAL BASIS OF OUR AGREEMENT. PLEASE PRINT AND RETAIN A COPY OF THIS AGREEMENT FOR YOUR RECORDS.
+`,
+
+  `The use of Acquisition.com (along with all subdomains, collectively, hereafter the “Website”), which is owned and maintained by Acquisition LLC (“Acquisition LLC,” “Acquisition LLCSecrets,” “we,” “our,” “us”), is governed by the policies, terms, and conditions set forth below. Please read them carefully. We offer the Website, including all information, tools, and services available from the Website to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here. By accessing, using, or subscribing to the Website, you and your business agree to the terms set forth herein. If you do not agree to these terms in their entirety, you are not authorized to use the Website.
+`,
+
+  `THIS IS A BINDING AGREEMENT. THESE TERMS OF USE (“TERMS”) TOGETHER WITH OUR PRIVACY POLICY FORM A LEGALLY BINDING AGREEMENT(“AGREEMENT”) BETWEEN YOU AND YOUR BUSINESS (“YOU” OR “CUSTOMER”)AND Acquisition.com AND SHOULD BE READ CAREFULLY. THISAGREEMENT GOVERNS YOUR ACCESS TO AND USE AND ATTEMPTED USE OF THE WEBSITE AND THE SERVICES PROVIDED BY Acquisition LLC.
+`,
+
+  `THIS AGREEMENT CONTAINS ARBITRATION AND CLASS ACTION WAIVER PROVISIONS THAT WAIVE YOUR RIGHT TO A COURT HEARING, RIGHT TO A JURY TRIAL, AND RIGHT TO PARTICIPATE IN A CLASS ACTION. ARBITRATION IS MANDATORY AND IS THE EXCLUSIVE REMEDY FOR ANY AND ALL DISPUTES UNLESS SPECIFIED BELOW IN SECTION 11.
+`,
+
+  `Acquisition LLC reserves the right to update and change, from time to time, these Terms and all documents incorporated by reference by posting updates and/or changes to our Website. It is your responsibility to check this page periodically for changes. You can find the most recent version of these Terms at https://acquisition.com/terms-of-use/. Use of the Website after such changes constitutes acceptance of such changes.
+`,
+
+  `To sign up as a paying Acquisition LLC client, you will be required to agree to additional contractual terms.
+`,
+
+  `Table of Contents:
+`,
+
+  `Website Use
+Website User Conduct and Restrictions
+Our Privacy Policy and Your Personal Information
+Prohibited Use of the Site
+Information You Provide; Registration; User Names and Passwords
+DISCLAIMER – YOUR BUSINESS’ INDIVIDUAL SUCCESS WILL VARY
+Your Responsibilities in Running Your Business
+Testimonials, Reviews, and Pictures/Videos
+DISCLAIMERS OF OTHER WARRANTIES
+LIMITATIONS OF LIABILITIES
+DISPUTE RESOLUTION BY MANDATORY BINDING ARBITRATION ANDCLASS ACTION WAIVERAcquisition LLC’s Additional Remedies
+Indemnification
+Notice and Takedown Procedures; Copyright Agent
+Third-Party Links
+Termination
+No Waiver
+Governing Law and Venue
+Force Majeure
+Assignment
+Electronic Signature
+Changes to the Agreement
+Severability
+Entire Agreement
+Contacting Us`,
+
+  `SECTION 1 – WEBSITE USE
+`,
+
+  `The Website is intended for businesses operated by adults. If you use the Website, you are affirming that you are at least 18 years old or the legal age of majority in your state or province of residence (whichever is greater), operate a business, have the legal capacity to enter into a binding contract with us, and have read this Agreement and understand and agree to its terms.
+`,
+
+  `SECTION 2 – WEBSITE USER CONDUCT AND RESTRICTIONS
+`,
+
+  `All aspects of our Website are protected by U.S. and international copyright, trademark, and other intellectual property laws, including all design elements, text material, logos, taglines, metatags, hashtags, photographic images, personal stories, icons, video and audio clips, personal training sessions, marketing tips and strategies, and downloads. No material on or provided through the Website may be copied, reproduced, distributed, republished, uploaded, displayed, posted, or transmitted in any way whatsoever. The Acquisition LLC trademark and logo are proprietary marks of Acquisition LLC, and the use of those marks is strictly prohibited unless otherwise provided for by these Terms. Nothing herein gives you the right to use, copy, register as a domain name, reproduce, or otherwise display any logo, tagline, trademark, trade name, copyrighted material, patent, trade dress, trade secret, or confidential information owned by Acquisition LLC.
+`,
+
+  `Subject to your continued strict compliance with all Terms, Acquisition LLC provides to you a revocable, limited, non-exclusive, royalty-free, non-sublicensable, non-transferable license to use the Website. You acknowledge and agree that you do not acquire any ownership rights in any material protected by intellectual property laws. You agree not to use or attempt to use the Website in any unlawful manner. You further agree not to commit any unlawful act or attempt to commit any unlawful act on or through the Website including, but not limited to: (1) hacking and other digital or physical attacks on the Website; (2) publishing vulgar, obscene, or defamatory material; or (3) any other unlawful act.
+`,
+
+  `SECTION 3 – OUR PRIVACY POLICY AND YOUR PERSONAL INFORMATION
+`,
+
+  `We respect your privacy and the use and protection of your and your business’s non-public, personal information. Your submission of personal information through the Website is governed by our Privacy Policy. Our Privacy Policy may be viewed athttps://acquisition.com/privacy-policy/. Acquisition LLC reserves the right to modify its Privacy Policy at its reasonable discretion from time to time. Our Privacy Policy is incorporated into this Agreement by reference.SECTION 4 – PROHIBITED USE OF THE SITE You agree not to use or attempt to use the Website in any unlawful manner or a manner harmful to Acquisition LLC. You further agree not to commit any harmful or unlawful act or attempt to commit any harmful or unlawful act on or through the Website including, but not limited to, refraining from:
+`,
+
+  `a. HARMFUL ACTS.
+`,
+
+  `Any dishonest or unethical business practice; any violation of the law; infliction of harm to Acquisition LLC’s reputation; hacking and other digital or physical attacks on the Website; use any device, software or routine that interferes with the proper functioning of the Website or servers or networks connected to the Website, or take any other action that interferes with another’s use of the Website; use any “robot,” “spider” or other automatic or manual device or process for the purpose of compiling information on the Website for purposes other than for a generally available search engine, including but not limited to any actions which spam, phish, pretext, spider, or scrape the Website; otherwise collect or track the personal information of others; any violation of the rights of Acquisition LLC or any third party, including but not limited to use of any company name, service marks, or trademarks without prior written consent, including as metatags or hidden text.
+`,
+
+  `b. “SPAMMING” AND UNSOLICITED COMMUNICATIONS.
+`,
+
+  `We have zero tolerance for spam and unsolicited communications. Any communications sent or authorized by you reasonably deemed “spamming,” or any other unsolicited solicitations (including without limitation postings on social media or third-party blogs) will be deemed a material threat to Acquisition LLC’s reputation and to the rights of third parties. 
+`,
+
+  `c. OFFENSIVE COMMUNICATIONS.
+`,
+
+  `Any communication sent, posted, or authorized by you, including without limitation postings on any website operated by you, or social media or blog, which are: sexually explicit, obscene, vulgar, or pornographic; offensive, profane, hateful, threatening, harmful, defamatory, libelous, harassing, or discriminatory; graphically violent; solicitous of unlawful behavior; or that violates the intellectual property rights of another.
+`,
+
+  `SECTION 5 – INFORMATION YOU PROVIDE; REGISTRATION; USER NAMES AND PASSWORDS
+`,
+
+  `As an Acquisition LLC user, you may be required to create an account for your business with Acquisition LLC. You warrant that the information you provide us is truthful and accurate and that you are not impersonating another person. You are responsible for maintaining the confidentiality of any password you may use to access your business’s Acquisition LLC user account, and you agree not to transfer the password or user name, or lend or otherwise transfer your use of or access to your business’s user account, to any unauthorized third party. You are fully responsible for all transactions with, and information conveyed to, Acquisition LLC under your business’s user account. You agree to immediately notify Acquisition LLC of any unauthorized use of your password or user name or any other breach of security related to your business’s user account. You and your business agree that Acquisition LLC is not liable, and you will hold Acquisition LLC harmless, for any loss or damage arising from your failure to comply with any of the foregoing obligations. Please see Section 13 below for additional information.
+`,
+
+  `SECTION 6 – DISCLAIMER – YOUR BUSINESS’S INDIVIDUAL RESULTS WILL VARY
+`,
+
+  `Every business is different, employing different strategic approaches and organizational structures, and offering different services and products. Therefore, individual results will vary from user to user. YOUR BUSINESS’S INDIVIDUAL RESULTS WILL VARY DEPENDING ON A VARIETY OF FACTORS UNIQUE TO YOUR BUSINESS, INCLUDING BUT NOT LIMITED TO YOUR LOCATION, BUSINESS MODEL, STAFF AND FACILITY SIZE, AND SERVICE AND PRODUCT OFFERINGS.
+`,
+
+  `Acquisition LLC does not promise, guarantee, or warrant your business’ success, income, or sales. You understand and acknowledge that Acquisition LLC will not at any time provide sales leads or referrals to you or your business. Those businesses who purchase our services or products will receive access to marketing and operational strategies and tools. However, we do not guarantee your business’s success and based on many market factors that we cannot control, the tools and strategies we provide may or may not be applicable to your specific business. Further, we do not make claims that our tools, strategies, or other offerings will make your business any specific amount of money, and it is possible that you will not earn your investment back. We do not sell a business opportunity, “get rich quick” program, guaranteed system, franchise system, or a business in a box. You should not purchase our services or products if that is your expectation. Instead, you should purchase with the understanding that using the information and tools purchased will take time and effort and may be applicable in some situations but not others. Also, we do not offer any tax, accounting, financial, or legal advice. You should consult your business’s accountant, attorney, or financial advisor for advice on these topics.
+`,
+
+  `SECTION 7 – YOUR RESPONSIBILITIES IN RUNNING YOUR BUSINESS
+`,
+
+  `You are solely and exclusively responsible for complying with any and all applicable laws and regulations in running your business, including, but not limited to, all laws governing advertising and marketing claims, subscriptions, refunds, premium offers, tax laws, and all additional laws applicable to your business. Acquisition LLC shall have no liability for your or your business’s violation of any laws. You are solely and exclusively responsible for collecting and reporting any and all sales and use tax, and any other taxes, which may apply to the sales of products or services by your business. Acquisition LLC shall not be responsible to collect or report any taxes which may apply to your business or sales of products or services by your business. You agree to indemnify Acquisition LLC as set out in Section 13 below in the event that you and/or your business violate any law and a claim is threatened or asserted against Acquisition LLC as a result. You understand and agree that in running your business, transactions may be subject to sales tax and that it is your sole and exclusive responsibility to collect and report such tax for sales to your customers.
+`,
+
+  `SECTION 8 – TESTIMONIALS, REVIEWS, AND PICTURES/VIDEOS
+`,
+
+  `Acquisition LLC is pleased to hear from users and clients and welcomes your comments regarding our services and products. Acquisition LLC may use testimonials and/or product reviews in whole or in part together with the name, city, and state of the person submitting it. Testimonials may be used for any form of activity relating to Acquisition LLC’s services or products, in printed and online media, as Acquisition LLC determines in its sole and exclusive discretion. Testimonials represent the unique experience of the participants and businesses submitting the testimonial, and do not necessarily reflect the experience that you and your business may have using our services or products. As set forth above in Section 6, your business’s results will vary depending upon a variety of factors unique to your business and market forces beyond Acquisition LLC’s control. Anything that you or your business submit or post to the Website and/or provide us, or post on any social media or other sites about us, including without limitation, photographs, testimonials, ideas, know-how, techniques, questions, reviews, biographies, your business’s name, comments, and suggestions is and will be treated as non-confidential and non-proprietary, and we shall have the royalty-free, worldwide, perpetual, irrevocable, and transferable right to use, copy, distribute, display, publish, perform, sell, lease, transmit, adapt, and create derivative works from such submissions by any means and in any form, and to translate, modify, reverse-engineer, disassemble, or decompile such submissions. You and your business agree that this authorization and license may be assigned by Acquisition.com to any other party. Additionally, Acquisition LLC reserves the right to correct grammatical and typing errors, to shorten submissions prior to publication or use, and to review all submissions prior to publication or use. Acquisition LLC shall be under no obligation to use any, or any part of, any submission.
+`,
+
+  `SECTION 9 – DISCLAIMERS OF OTHER WARRANTIES
+`,
+
+  `EXCEPT WHERE OTHERWISE INAPPLICABLE OR PROHIBITED BY LAW: YOU EXPRESSLY AGREE THAT YOUR AND YOUR BUSINESS’S USE OF, OR INABILITY TO USE, THE WEBSITE IS AT YOUR AND YOUR BUSINESS’S SOLE RISK. THE WEBSITE AND THE MATERIALS, INFORMATION, AND SERVICES CONTAINED AND OFFERED ON THE WEBSITE ARE PROVIDED ON AN “AS IS”, AND  “AS AVAILABLE” BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF TITLE OR IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. WE MAKE NO, AND EXPRESSLY DISCLAIM ANY AND ALL, REPRESENTATIONS AND WARRANTIES AS TO THE RELIABILITY, TIMELINESS, QUALITY, SUITABILITY, AVAILABILITY, ACCURACY, AND/OR COMPLETENESS OF ANY INFORMATION ON THIS WEBSITE. WE DO NOT GUARANTEE, REPRESENT OR WARRANT THAT YOUR OR YOUR BUSINESS’S USE OF OUR WEBSITE WILL BE UNINTERRUPTED, TIMELY, SECURE OR ERROR-FREE. WE DO NOT WARRANT THAT THE RESULTS THAT MAY BE OBTAINED FROM THE USE OF THE WEBSITE WILL BE ACCURATE OR RELIABLE. YOU AND YOUR BUSINESS AGREE THAT FROM TIME TO TIME WE MAY REMOVE THE WEBSITE FOR INDEFINITE PERIODS OF TIME OR CANCEL THE WEBSITE OR ANY SERVICE AT ANY TIME, WITHOUT NOTICE TO YOU OR YOUR BUSINESS.
+`,
+
+  `SECTION 10 – LIMITATIONS OF LIABILITIES
+`,
+
+  `EXCEPT WHERE OTHERWISE INAPPLICABLE OR PROHIBITED BY LAW, IN NOCASE SHALL Acquisition LLC, OUR DIRECTORS, OFFICERS, EMPLOYEES,AFFILIATES, AGENTS, CONTRACTORS, SUPPLIERS, SERVICE PROVIDERS, ORLICENSORS BE LIABLE FOR ANY INJURY, LOSS, CLAIM, OR ANY DIRECT,INDIRECT, INCIDENTAL, PUNITIVE, SPECIAL, OR CONSEQUENTIAL DAMAGES OF ANY KIND, INCLUDING, WITHOUT LIMITATION LOST PROFITS, LOST REVENUE, LOST SAVINGS, LOSS OF DATA, REPLACEMENT COSTS, OR ANY SIMILAR DAMAGES, WHETHER BASED IN CONTRACT, TORT (INCLUDING NEGLIGENCE), STATUTE, STRICT LIABILITY, OR OTHERWISE, ARISING FROM YOUR OR YOUR BUSINESS’S USE OR ATTEMPTED USE OF ANY PART OF THE WEBSITE OR ANY SERVICES, OR FOR ANY OTHER CLAIM RELATED IN ANY WAY TO YOUR OR YOUR BUSINESS’S USE OR ATTEMPTED USE OF THE WEBSITE OR ANY SERVICE, INCLUDING, BUT NOT LIMITED TO, ANY ERRORS OR OMISSIONS IN ANY CONTENT, OR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE WEBSITE OR ANY CONTENT OR SERVICE POSTED,TRANSMITTED, OR OTHERWISE MADE AVAILABLE, EVEN IF ADVISED OF THEIRPOSSIBILITY.
+`,
+
+  `IF, NOTWITHSTANDING THE LIMITATION OF LIABILITY SET FORTH ABOVE, Acquisition LLC IS FOUND LIABLE UNDER ANY THEORY, Acquisition LLC’S LIABILITY AND YOUR AND YOUR BUSINESS’S EXCLUSIVE REMEDY WILL BE LIMITED TO THE LESSER OF (I) USD $1,000.00, OR (II) THE TOTAL AMOUNT OF MONEY YOU OR YOUR BUSINESS PAID TO Acquisition LLC IN THE ONE (1) MONTH PERIOD IMMEDIATELY PRECEDING THE INCIDENT ON WHICH YOUR OR YOUR BUSINESS’S ALLEGED CLAIM IS BASED. THIS LIMITATION OF LIABILITY SHALL APPLY FOR ALL CLAIMS, REGARDLESS OF WHETHER Acquisition LLC WAS AWARE OF OR ADVISED IN ADVANCE OF THE POSSIBILITY OF DAMAGES OR SUCH CLAIMS. SOME STATES DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES, SO SOME OF THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU OR YOUR BUSINESS.
+`,
+
+  `SECTION 11 – DISPUTE RESOLUTION BY MANDATORY BINDING ARBITRATION AND CLASS ACTION WAIVER
+`,
+
+  `PLEASE READ THIS ARBITRATION PROVISION CAREFULLY TO UNDERSTAND YOUR AND YOUR BUSINESS’S RIGHTS. EXCEPT WHERE PROHIBITED BY LAW, YOU AND YOUR BUSINESS AGREE THAT ANY CLAIM THAT YOU OR YOUR BUSINESS MAY HAVE IN THE FUTURE MUST BE RESOLVED THROUGH FINAL AND BINDING CONFIDENTIAL ARBITRATION. YOU AND YOUR BUSINESS AGREE TO WAIVE THE RIGHT TO A TRIAL BY JURY. THE RIGHTS THAT YOU OR YOUR BUSINESS WOULD HAVE IF YOU OR YOUR BUSINESS WENT TO COURT, SUCH AS DISCOVERY OR THE RIGHT TO APPEAL, MAY BE MORE LIMITED OR MAY NOT EXIST. YOU AND YOUR BUSINESS AGREE TO ONLY BRING A CLAIM IN AN INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF(LEAD OR OTHERWISE) OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING. YOU AND YOUR BUSINESS FURTHER AGREE THAT THE ARBITRATOR MAY NOT CONSOLIDATE PROCEEDINGS OR CLAIMS OR OTHERWISE PRESIDE OVER ANY FORM OF A REPRESENTATIVE OR CLASS PROCEEDING.
+`,
+
+  `THERE IS NO JUDGE OR JURY IN ARBITRATION, AND COURT REVIEW OF AN ARBITRATION AWARD IS LIMITED. HOWEVER, AN ARBITRATOR CAN AWARD ON AN INDIVIDUAL BASIS THE SAME DAMAGES AND RELIEF AS A COURT(INCLUDING INJUNCTIVE AND DECLARATORY RELIEF OR STATUTORY DAMAGES), AND MUST FOLLOW THESE TERMS OF USE AS A COURT WOULD.
+`,
+
+  `If you or your business has a complaint, dispute, or controversy, you and your business agree to first contact us at legal@acquisition.com to attempt to resolve the dispute or controversy informally. Any controversy or claim arising out of or related to the use of the Website, any service, product, or information, or your and your business’s relationship with us that cannot be resolved through such informal process or through negotiation within 120 days shall be resolved by binding, confidential arbitration administered by the American Arbitration Association(“AAA”), and judgment on the award rendered may be entered in any court having jurisdiction thereof. We agree that any claim we may have against you or your business will also be subject to this arbitration provision, except as provided in Sections 12 and 13 below. The arbitration will be conducted by a single neutral arbitrator in the English language in Austin, Texas, unless we both agree to conduct the arbitration by telephone or written submissions. The arbitrator shall be selected by agreement of the parties or, if the parties cannot agree, chosen in accordance with the Rules of the AAA. The arbitration will be conducted in accordance with the provisions of theAAA’s Commercial Arbitration Rules and Mediation Procedures, in effect at the time of submission of the demand for arbitration. The AAA’s Rules are available at www.adr.org or by calling 1-800-778-7879. The arbitrator shall have the exclusive and sole authority to resolve any dispute relating to the interpretation, construction, validity, applicability, or enforceability of these Terms of Use, the Privacy Policy, this arbitration provision, and any other terms incorporated by reference into these Terms of Use. The arbitrator shall have the exclusive and sole authority to determine whether any dispute is arbitrable. The arbitrator shall have the exclusive and sole authority to determine whether this arbitration agreement can be enforced against a non-signatory to this agreement and whether a non-signatory to this agreement can enforce this provision against you, your business or Acquisition LLC. Payment of all filing, administration, and arbitrator fees will be governed by the AAA’s Rules. In all other respects, and regardless of which party partially or fully prevails, the parties shall each pay their own additional fees, costs, and expenses, including, but not limited to, those for any attorneys, experts, documents, and witnesses.
+`,
+
+  `The arbitrator shall follow the substantive law of the State of Texas without regard to its conflicts of laws principles. Any award rendered shall include a confidential written opinion and shall be final, subject to appeal under the Federal Arbitration Act, 9 U.S.C. §§ 1-16, as amended. Judgment on the award rendered by the arbitrator may be entered in any court of competent jurisdiction.
+`,
+
+  `You, your business, and Acquisition LLC agree that disputes will only be arbitrated on an individual basis and shall not be consolidated on a class-wide or other representative basis, nor consolidated with any other arbitration(s) or other proceedings that involve any claim or controversy of any other party. You, your business, and Acquisition LLC expressly waive any right to pursue any class or other representative action against each other. Failure or any delay in enforcing this arbitration provision in connection with any particular claim will not constitute a waiver of any rights to require arbitration at a later time or in connection with any other claims except that all claims must be brought within 1 year after the claim arises (the 1 year period includes the 120-day informal resolution procedures described above).
+`,
+
+  `This arbitration provision sets forth the terms and conditions of our agreement to final and binding confidential arbitration and is governed by and enforceable under the Federal ArbitrationAct, 9 U.S.C. §§ 1-16, as amended. 
+`,
+
+  `This provision survives termination of your account or relationship with Acquisition LLC, bankruptcy, assignment, or transfer. If the class action waiver is deemed unenforceable ( i.e., unenforceability would allow arbitration to proceed as a class or representative action), then this entire arbitration provision shall be rendered null and void and shall not apply. If a portion of this arbitration provision (other than the class action waiver) is deemed unenforceable, the remaining portions of this arbitration provision shall remain in full force and effect.
+`,
+
+  `YOU UNDERSTAND THAT YOU AND YOUR BUSINESS WOULD HAVE HAD A RIGHT TO LITIGATE THROUGH A COURT, TO HAVE A JUDGE OR JURY DECIDE YOUR CASE, AND TO BE PARTY TO A CLASS OR REPRESENTATIVE ACTION. HOWEVER, YOU UNDERSTAND AND AGREE TO HAVE ANY CLAIMS DECIDED INDIVIDUALLY AND ONLY THROUGH BINDING, FINAL, AND CONFIDENTIAL ARBITRATION IN ACCORDANCE WITH THIS ARBITRATION PROVISION. Should either party file an action contrary to this provision, the other party may recover attorney’s fees and costs up to $5,000.00.
+`,
+
+  `SECTION 12 – Acquisition LLC’S ADDITIONAL REMEDIES
+`,
+
+  `In order to prevent or limit irreparable injury to Acquisition LLC, in the event of any breach or threatened breach by you or your business of the provisions of this Agreement or any infringement or threatened infringement by you or your business of the intellectual property of Acquisition LLC or a third-party, Acquisition LLC shall be entitled to seek a temporary restraining order and preliminary and permanent injunctions or other equitable relief from a court of competent jurisdiction located in Austin, Texas enjoining such breach, threatened breach, infringement, or threatened infringement. Nothing in this Agreement shall be construed as prohibiting Acquisition LLC from pursuing in court any other remedies available to it for such breach, threatened breach, infringement, or threatened infringement, including the recovery of monetary damages from you and your business. You and your business hereby irrevocably consent to the exclusive personal jurisdiction of, and exclusive venue in, the courts of Austin, Texas for all such claims, and forever waive any challenge to said courts’ exclusive jurisdiction or venue.
+`,
+
+  `SECTION 13 – INDEMNIFICATION
+`,
+
+  `To the fullest extent permitted by law, you agree to defend, indemnify, and hold harmless Acquisition LLC, its directors, officers, employees, shareholders, licensors, independent contractors, subcontractors, suppliers, affiliates, parent companies, subsidiaries, and agents from and against any and all claims, actions, loss, liabilities, damages, expenses, demands, and costs of any kind, including, but not limited to attorneys’ fees and costs of any litigation or other dispute resolution, arising out of, resulting from, or in any way connected with or related to (1) your use, misuse, or attempt to use the Website, information, services, or products, (2) information you submit or transmit through the Website, (3) your breach of these Terms, the documents they incorporate by reference, the Agreement, or the representations and warranties provided by you in this Agreement, or (4) your violation of any law or the rights of a third party.
+`,
+
+  `SECTION 14 – NOTICE AND TAKEDOWN PROCEDURES; COPYRIGHT AGENT
+`,
+
+  `If you believe that materials or content available on any Acquisition.com website infringes any copyright you own, you or your agent may send Acquisition.com a notice requesting that Acquisition.com remove the materials or content from the Acquisition.com website. If you believe that someone has wrongly filed a notice of copyright infringement against you, you may send Acquisition.com a counter-notice. Notices and counter-notices should be sent to
+
+Acquisition.com
+
+c/o Paracorp Incorporated
+
+3610-2 N. Josey Lane #223
+
+Carrollton, TX 75007
+
+or by email to legal@acquisition.com.
+`,
+
+  `SECTION 15 – THIRD-PARTY LINKS
+`,
+
+  `The Website may contain links to other websites. Acquisition LLC assumes no responsibility for the content or functionality of any non-Acquisition LLC website to which we provide a link. Please see our Privacy Policy for more details.
+`,
+
+  `SECTION 16 – TERMINATION
+`,
+
+  `This Agreement will take effect (or shall re-take effect) at the time you click “SUBMIT,” “I ACCEPT,” “I AGREE,” or similar links or buttons, otherwise submit information through the Website, respond to a request for information, or begin installing, accessing, or using the Website, whichever is earliest. If, in our sole discretion, you or your business fail, or we suspect that you or your business have failed, to comply with any term or provision of the Agreement, we may terminate the Agreement or suspend your and your business’s access to the Website at any time without notice. Sections 6, 16 through 20, and 25 through 32 of this Agreement, as well as any representations, warranties, and other obligations made or undertaken by you, shall survive the termination of this Agreement and/or your account or relationship with Acquisition LLC. Sections 6 through 13, 15, and 17 through 24 of this Agreement, as well as any representations, warranties, and other obligations made or undertaken by you and/or your business, shall survive the termination of this Agreement and/or your or your business’s account or relationship with Acquisition LLC. Upon termination, you and your business remain responsible for any outstanding payments to Acquisition LLC on a non-prorated basis.
+`,
+
+  `SECTION 17 – NO WAIVER
+`,
+
+  `No failure or delay on the part of Acquisition LLC in exercising any right, power or remedy under this Agreement may operate as a waiver, nor may any single or partial exercise of any such right, power, or remedy preclude any other or further exercise of such right, power, or remedy, or the exercise of any other rights, power, or remedy under this Agreement. A waiver of any right or obligation under this Agreement shall only be effective if in writing and signed by Acquisition LLC.
+`,
+
+  `SECTION 18 – GOVERNING LAW AND VENUE
+`,
+
+  `This Agreement and any issue or dispute arising out of or otherwise related to this Agreement or your or your business’s access to or use of the Website, our Privacy Policy, or any matter concerning Acquisition LLC shall be governed exclusively by the laws of the State of Texas without regard to its conflicts of laws principles. To the extent that any claim or dispute is found by the arbitrator or (if proper) a court of competent jurisdiction to be excluded from the arbitration agreement in Section 11 above, the parties agree any such claim or dispute shall be exclusively brought in and decided by the state or federal courts located in Austin, Texas, and you hereby irrevocably consent to the exclusive personal jurisdiction of, and exclusive venue in, such courts, and forever waive any challenge to said courts’ exclusive jurisdiction or venue. All such claims must be brought on an individual and non-class, non-representative basis, and you forever waive any right to bring such claims on a class-wide or representative basis. The parties will bear their own respective costs and attorneys’ fees, regardless of which party prevails.
+`,
+
+  `SECTION 19 – FORCE MAJEURE
+`,
+
+  `Acquisition.com will not be responsible to you for any delay, damage, or failure caused by or occasioned by a Force Majeure Event. As used in this Agreement, “Force Majeure Event” shall mean: any act of God, act of nature or the elements, terrorism, insurrection, revolution or civil strife, piracy, civil war or hostile action, labor strikes, acts of public enemies, federal or state laws, rules and regulations of any governmental authorities having jurisdiction over the premises, inability to procure material, equipment, or necessary labor in the open market, acute and unusual labor, material, or equipment shortages, or any other causes beyond the control ofAcquisition.com. Delays due to any of the above causes shall not be deemed to be a breach of or failure to perform under this Agreement. Acquisition.com shall not be required against its will to adjust any labor or other similar dispute except in accordance with applicable law.
+`,
+
+  `SECTION 20 – ASSIGNMENT
+`,
+
+  `Acquisition LLC may assign its rights under this Agreement at any time, without notice. Your and your business’s rights and obligations under this Agreement cannot be assigned without Acquisition LLC’s (or its assigns’) express written consent.
+`,
+
+  `SECTION 21 – ELECTRONIC SIGNATURE
+`,
+
+  `All information communicated on the Website is considered an electronic communication. You and your business agree that we may communicate electronically with you and that such communications, as well as notices, disclosures, agreements, and other communications that we provide to you electronically, are equivalent to communications in writing and shall have the same force and effect as if they were in writing and signed by the party sending the communication.
+`,
+
+  `SECTION 22 – CHANGES TO THE AGREEMENT
+`,
+
+  `You can review the most current version of the Terms at any time athttps://acquisition.com/terms-of-use. We reserve the right, at our sole discretion, to update, change or replace any part of the Agreement, including the Privacy Policy by posting updates and changes to our Website. It is your responsibility to check our Website periodically for changes. Your and your business’s continued use of or access to our Website following the posting of any changes to the Agreement constitutes acceptance of those changes.
+`,
+
+  `SECTION 23 – SEVERABILITY
+`,
+
+  `If any provision of this Agreement is found by the arbitrator or (if proper) a court of competent jurisdiction to be invalid or unenforceable, the remaining provisions shall not be affected thereby and shall continue in full force and effect and such provision may be modified or severed from this Agreement to the extent necessary to make such provision enforceable and consistent withthe remainder of the Agreement.
+`,
+
+  `SECTION 24 – ENTIRE AGREEMENT
+`,
+
+  `These Terms, the Agreement, and any policies or operating rules posted by us on the Website or in respect to the Website constitute the entire agreement and understanding between you and your business and Acquisition LLC, and supersedes and replaces any prior or contemporaneous agreements, representations, communications, and proposals, whether oral or written. We may also, in the future, offer new services and/or features through the Website. Such new features and/or services shall also be subject to these Terms, the Agreement, and any policies or operating rules posted by us on the Website. Any ambiguities in the interpretation of these Terms or the Agreement shall not be construed against the drafting party.
+`,
+
+  `SECTION 25 – CONTACTING US
+`,
+
+  `We encourage our clients to contact us with questions or comments about our products and services. Please feel free to do so by sending an e-mail to support@acquisition.com. If you have any questions or inquiries concerning any of the Terms, you may contact Acquisition LLC by e-mail at legal@acquisition.com or by regular mail at:
+
+Acquisition.com
+
+c/o Paracorp Incorporated
+
+3610-2 N. Josey Lane #223
+
+Carrollton, TX 75007
+
+
+Notices to you may be made by posting a notice (or a link to a notice) on https://acquisition.com/terms, by e-mail, or by regular mail, at Acquisition LLC’s discretion. Copyright 2022 – Acquisition LLC – All Rights Reserved
+`,
+];
+
+const TermsOfService: NextPageWithLayout = () => {
+  return (
+    <div className="flex w-full flex-col items-center">
+      <div className="w-2/3 max-w-[500px]">
+        {terms_of_service.map((paragraph, index) => (
+          <p key={index} className="my-8 font-light">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+TermsOfService.getLayout = function getLayout(page: ReactElement) {
+  return <PublicLayout>{page}</PublicLayout>;
+};
+
+export default TermsOfService;

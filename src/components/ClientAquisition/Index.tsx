@@ -41,7 +41,7 @@ function ClientStart() {
 
   return (
     <div className="flex w-full justify-center">
-      <div className="flex w-3/4 flex-col items-center rounded-lg bg-white shadow-2xl">
+      <div className="flex w-3/4 flex-col items-center rounded-lg bg-white text-center shadow-2xl">
         <div>
           <p className="mt-2">Which best describes you?</p>
         </div>
@@ -102,9 +102,9 @@ function ClientStart() {
               </div>
             </div>
 
-            <div className="flex w-full justify-center rounded-b-md bg-primary-200 p-2 text-white">
-              <button>Next</button>
-            </div>
+            <button className="flex w-full justify-center rounded-b-md bg-primary-200 p-2 text-white">
+              Next
+            </button>
           </form>
         </div>
       </div>

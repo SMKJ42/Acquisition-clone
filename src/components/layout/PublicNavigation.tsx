@@ -34,7 +34,7 @@ export const PublicNavigation = (props: {
           }}
         />
       </div>
-      <div className="navbar flex h-10 w-screen justify-center text-white">
+      <div className="navbar flex h-10 w-screen justify-center font-light text-white">
         <div className="flex-1" onMouseEnter={() => setDropDown(false)}></div>
 
         {/*
@@ -42,7 +42,7 @@ export const PublicNavigation = (props: {
          */}
 
         <div
-          className="my-2 flex-1 whitespace-nowrap hover:underline"
+          className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
           onMouseEnter={() => setDropDown("books")}
         >
           <Link href="/books">Books</Link>
@@ -61,7 +61,7 @@ export const PublicNavigation = (props: {
          * Courses
          */}
         <div
-          className="my-2 flex-1 whitespace-nowrap hover:underline"
+          className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
           onMouseEnter={() => setDropDown("courses")}
         >
           <Link href="/courses">Courses</Link>
@@ -80,7 +80,7 @@ export const PublicNavigation = (props: {
          * Partnership
          */}
         <div
-          className="my-2 flex-1 whitespace-nowrap hover:underline"
+          className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
           onMouseEnter={() => setDropDown("partnership")}
         >
           <Link href="/partnership">Partnership</Link>
@@ -103,7 +103,7 @@ export const PublicNavigation = (props: {
          * Speaking
          */}
         <div
-          className="my-2 flex-1 whitespace-nowrap hover:underline"
+          className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
           onMouseEnter={() => setDropDown("speaking")}
         >
           <Link href="/speaking">Speaking</Link>
@@ -122,7 +122,7 @@ export const PublicNavigation = (props: {
          * The Firm
          */}
         <div
-          className="my-2 flex-1 whitespace-nowrap hover:underline"
+          className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
           onMouseEnter={() => setDropDown("the_firm")}
         >
           <Link href="/the_firm/the_team">The Firm</Link>
@@ -141,10 +141,15 @@ export const PublicNavigation = (props: {
          * Careers
          */}
         <div
-          className="my-2 flex-1 whitespace-nowrap hover:underline"
+          className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
           onMouseEnter={() => setDropDown("careers")}
         >
-          <Link href="/careers">Careers</Link>
+          <Link
+            href="/careers"
+            onClick={() => void router.push("/careers/open_jobs")}
+          >
+            Careers
+          </Link>
           {dropDown === "careers" && (
             <div className="absolute flex flex-1 flex-col bg-primary-200">
               {careerOptions.map((option) => (

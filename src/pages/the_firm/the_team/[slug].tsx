@@ -1,7 +1,7 @@
 import { type ReactElement, useEffect, useState } from "react";
 import type { NextPageWithLayout } from "../../_app";
 import { PublicLayout } from "~/components/layout/PublicLayout";
-import team from "~/utils/staticData";
+import team from "~/utils/staticData/bios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { CallToAction } from "~/components/shared/CallToAction";
