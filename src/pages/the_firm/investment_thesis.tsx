@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const InvestmentThesis: NextPageWithLayout = () => {
   return (
-    <div>
+    <div className="bg-texture">
       <div className="flex w-full flex-col items-center justify-center bg-primary-100 pt-4 text-center text-4xl font-bold text-white">
         <h2 className="flex flex-col">
           <span className="text-primary-200">ACQUISITION.COM</span>

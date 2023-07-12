@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { PublicNavigation } from "./PublicNavigation";
-import { Footer } from "./Footer";
 import { type ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { Footer } from "./Footer";
 
 export const PublicLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
@@ -14,14 +14,28 @@ export const PublicLayout = ({ children }: { children: ReactNode }) => {
     if (router.pathname === "/") {
       setPage("home");
     } else {
-      setPage(router.pathname);
+      const regex = /\/([^/]+)$/;
+      const match = regex.exec(router.pathname);
+      if (match && match[1]) {
+        if (match[1] === "[slug]") {
+          const newRegex = /\/([^/]+)\/[^/]+\/?$/;
+          const newMatch = newRegex.exec(router.pathname);
+          if (newMatch && newMatch[1]) {
+            const newPage = newMatch[1].replace(/_/g, " ");
+            setPage(newPage);
+          }
+          return;
+        }
+        const page = match[1].replace(/_/g, " ");
+        setPage(page);
+      }
     }
-  }, [router.pathname]);
+  }, [router]);
 
   return (
     <>
       <Head>
-        <title className="mt-2">Acquisition.com</title>
+        <title>Acquisition.com</title>
         <meta name="Description" content={`Acquision.com ${page}`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -31,7 +45,7 @@ export const PublicLayout = ({ children }: { children: ReactNode }) => {
         onMouseEnter={() => setDropDown(false)}
       >
         <div
-          className="page mt-20 min-h-[calc(100vh-13rem)] w-full bg-texture"
+          className="page min-h-[calc(100vh-13rem)] w-full"
           onMouseEnter={() => setDropDown(false)}
         >
           {children}

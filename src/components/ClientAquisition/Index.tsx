@@ -102,7 +102,7 @@ function ClientStart() {
               </div>
             </div>
 
-            <button className="flex w-full justify-center rounded-b-md bg-primary-200 p-2 text-white">
+            <button className="flex w-full justify-center rounded-b-md bg-primary-200 p-2 text-white hover:bg-primary-300">
               Next
             </button>
           </form>

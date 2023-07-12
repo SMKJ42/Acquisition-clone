@@ -30,7 +30,7 @@ const NotFountBoundary: NextPageWithLayout = () => {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-13rem)] w-full justify-center ">
+    <div className="flex min-h-[calc(100vh-13rem)] w-full justify-center bg-texture">
       <div className=" md:min-w-500px min-w-300px flex w-1/2 items-center  text-center">
         <div className="rounded-lg bg-white p-8">
           <h1 className="pb-4 text-lg font-bold">

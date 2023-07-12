@@ -13,6 +13,8 @@ export default {
       backgroundImage: {
         "great-place-to-work":
           "url('/images/milad-fakurian-PGdW_bHDbpI-unsplash.jpg')",
+        "alex-laila-parallax":
+          "url(https://www.acquisition.com/hubfs/Acquisition_September2022/Alex_and_Leila_Extended-1.png)",
       },
     },
   },

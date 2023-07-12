@@ -23,11 +23,11 @@ export const CallToAction = () => {
           &nbsp;can help.
         </p>
         <div className="mt-4">
-          <button className="mb-8 rounded-2xl bg-primary-200 px-6 py-4 text-white">
+          <button className="mb-8 rounded-2xl bg-primary-200 px-6 py-4 text-white hover:bg-primary-300">
             Learn More
           </button>
           {/* <br /> */}
-          <button className="m-4 mb-8 w-auto rounded-2xl bg-primary-200 px-6 py-4 text-white">
+          <button className="m-4 mb-8 w-auto rounded-2xl bg-primary-200 px-6 py-4 text-white hover:bg-primary-300">
             Work With Us
           </button>
         </div>

@@ -41,7 +41,7 @@ export const TeamMemberCard = ({ member }: TeamMember) => {
           );
           return;
         }}
-        className="rounded-xl bg-primary-200 px-8 py-2 text-white"
+        className="rounded-xl bg-primary-200 px-8 py-2 text-white hover:bg-primary-300"
       >
         About {`${member.firstName}`}
       </button>

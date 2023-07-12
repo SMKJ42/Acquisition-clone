@@ -5,8 +5,8 @@ import { PublicLayout } from "~/components/layout/PublicLayout";
 
 const Home: NextPageWithLayout = () => {
   return (
-    <>
-      <div className="flex flex-col items-center">
+    <div className="bg-texture">
+      <div className="flex flex-col items-center ">
         <h2 className="my-4 text-xl font-bold">
           DO YOU WANT TO&nbsp;
           <span className="my-2 text-primary-100">SCALE YOUR BUSINESS</span>?
@@ -17,7 +17,7 @@ const Home: NextPageWithLayout = () => {
         </p>
       </div>
       <ClientAquisition />
-    </>
+    </div>
   );
 };
 

@@ -9,7 +9,7 @@ const CareersBlog: NextPageWithLayout = () => {
   const [filter, setFilter] = useState<string | null>(null);
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-texture">
       <div className="flex w-full flex-col items-center bg-primary-200 text-white">
         <h1 className="pb-4 pt-8 text-4xl font-extrabold">
           BE THE MOST IMPRESSIVE CANDIDATE
@@ -64,7 +64,7 @@ const CareersBlog: NextPageWithLayout = () => {
         </div>
         {posts.map((post) => {
           return (
-            <div key={post.id} className="bg-white">
+            <div key={post.id} className="">
               <h3>Post Title</h3>
               <p>Post Date</p>
               <p>Post Category</p>

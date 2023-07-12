@@ -6,7 +6,7 @@ import { PublicLayout } from "~/components/layout/PublicLayout";
 const NotFountBoundary: NextPageWithLayout = () => {
   const router = useRouter();
   return (
-    <>
+    <div className="bg-texture">
       <h2>Oops, looks like this page doesn&apos;t exist!</h2>
       <button
         onClick={() => {
@@ -15,7 +15,7 @@ const NotFountBoundary: NextPageWithLayout = () => {
       >
         Home
       </button>
-    </>
+    </div>
   );
 };
 

@@ -166,7 +166,7 @@ Copyright 2022 – Acquisition LLC – All Rights Reserved`,
 
 const privacy_policy: NextPageWithLayout = () => {
   return (
-    <div className="flex w-full flex-col items-center">
+    <div className="flex w-full flex-col items-center bg-texture">
       <div className="w-2/3 max-w-[500px]">
         {policy.map((paragraph, index) => (
           <p key={index} className="my-8 font-light">

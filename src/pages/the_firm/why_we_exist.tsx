@@ -6,7 +6,7 @@ import { CallToAction } from "~/components/shared/CallToAction";
 
 const WhyWeExist: NextPageWithLayout = () => {
   return (
-    <>
+    <div className="bg-texture">
       <div className="flex flex-col items-center bg-white pb-8 text-center">
         <h2 className="pt-8 text-2xl font-bold">WHY WE EXIST</h2>
         <div className="flex justify-center py-6">
@@ -79,7 +79,7 @@ const WhyWeExist: NextPageWithLayout = () => {
         </div>
       </div>
       <CallToAction />
-    </>
+    </div>
   );
 };
 

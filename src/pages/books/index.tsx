@@ -35,7 +35,7 @@ const books = [
 ];
 const Books: NextPageWithLayout = () => {
   return (
-    <div className="flex w-full flex-col items-center py-8">
+    <div className="flex w-full flex-col items-center bg-texture py-8">
       <div>
         <h1 className="trucate mx-8 mb-4 flex flex-col text-center text-3xl font-extrabold">
           WANT TO LEVEL UP?&nbsp;

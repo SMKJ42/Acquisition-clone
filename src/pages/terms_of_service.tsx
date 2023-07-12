@@ -266,7 +266,7 @@ Notices to you may be made by posting a notice (or a link to a notice) on https:
 
 const TermsOfService: NextPageWithLayout = () => {
   return (
-    <div className="flex w-full flex-col items-center">
+    <div className="flex w-full flex-col items-center bg-texture">
       <div className="w-2/3 max-w-[500px]">
         {terms_of_service.map((paragraph, index) => (
           <p key={index} className="my-8 font-light">

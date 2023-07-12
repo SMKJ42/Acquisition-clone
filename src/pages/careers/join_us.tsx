@@ -20,7 +20,7 @@ const JoinUs: NextPageWithLayout = () => {
   };
 
   return (
-    <div>
+    <div className="bg-texture">
       <div>
         <h1>
           JOIN <span className="text-primary-200">MOZI TALENT</span>

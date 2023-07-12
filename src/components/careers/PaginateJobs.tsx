@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRef } from "react";
 
 const cards = [
   {
@@ -29,16 +30,18 @@ const cards = [
 ];
 
 export function PaginateJobs() {
+  const harness = useRef(null);
+
   return (
-    <div>
-      <div>
+    <div className="paginate-jobs-container flex">
+      <div className="relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={1.5}
+          strokeWidth={2.5}
           stroke="currentColor"
-          className="h-6 w-6 text-primary-200"
+          className="flex h-12 text-primary-200"
         >
           <path
             strokeLinecap="round"
@@ -47,23 +50,25 @@ export function PaginateJobs() {
           />
         </svg>
       </div>
-      {cards.map((element) => {
-        const { text, src, alt } = element;
-        return <Card key="alt" text={text} src={src} alt={alt} />;
-      })}
+      <div className="flex flex-nowrap" ref={harness}>
+        {cards.map((element) => {
+          const { text, src, alt } = element;
+          return <Card key={alt} text={text} src={src} alt={alt} />;
+        })}
+      </div>
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={1.5}
+          strokeWidth={2.5}
           stroke="currentColor"
-          className="h-6 w-6 text-primary-200"
+          className="flex h-12 text-primary-200"
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            d="M15.75 19.5L8.25 12l7.5-7.5"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
           />
         </svg>
       </div>
@@ -74,19 +79,19 @@ export function PaginateJobs() {
 function Card(props: { text: string[]; src: string; alt: string }) {
   const { text, src, alt } = props;
   return (
-    <div className="">
-      <div>
-        <h3>{text}</h3>
-      </div>
+    <div className="shrink-0">
       <div className="flex">
         <Image
           src={src}
           alt={alt}
           height={0}
           width={0}
-          sizes="50vw"
-          style={{ width: "50vw", height: "auto" }}
+          sizes="90vw"
+          className="h-280px w-auto"
         ></Image>
+      </div>
+      <div>
+        <h3>{text}</h3>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const Speaking: NextPageWithLayout = () => {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-13rem)] w-full justify-center ">
+    <div className="flex min-h-[calc(100vh-13rem)] w-full justify-center bg-texture">
       <div className="flex w-full items-center p-12 sm:w-[700px] lg:w-[900px]">
         <div className="rounded-lg bg-white p-8 shadow-lg">
           <h1 className="text-center text-xl font-bold">SPEAKING REQUEST</h1>
@@ -314,7 +314,7 @@ const Speaking: NextPageWithLayout = () => {
                 <div className="flex w-full justify-center sm:col-span-2">
                   <button
                     type="submit"
-                    className="rounded-2xl bg-primary-200 px-8 py-4 text-center text-white"
+                    className="rounded-2xl bg-primary-200 px-8 py-4 text-center text-white hover:bg-primary-300"
                   >
                     Submit
                   </button>

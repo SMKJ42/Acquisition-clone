@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const bookOptions = [] as string[];
 const courseOptions = [] as string[];
@@ -17,26 +17,51 @@ export const PublicNavigation = (props: {
   const router = useRouter();
   const { dropDown, setDropDown } = props;
 
+  const [position, cssPosition] = useState(true);
+
+  //WHAT THE FFUFUUUU
+
+  console.log(router.pathname);
+
+  useEffect(() => {
+    switch (router.pathname) {
+      case "/careers/our_culture":
+        cssPosition(false);
+      default:
+        cssPosition(true);
+    }
+    console.log(position);
+  }, [router]);
+
   return (
-    <nav className="nav fixed h-20 w-full bg-primary-100  text-center sm:flex sm:flex-col">
-      <div
-        className="bg-primary-00 z-40 mt-1 flex w-full justify-center"
-        onMouseEnter={() => setDropDown(false)}
-      >
-        <Image
-          src="https://www.acquisition.com/hs-fs/hubfs/ACQ_Web_Global-NavLogo%203.png?width=554&height=52&name=ACQ_Web_Global-NavLogo%203.png"
-          alt="Acquisition.com logo"
-          width={300}
-          height={50}
-          className="mt-2"
-          loading="lazy"
-          onClick={() => {
-            void router.push("/the_firm/why_we_exist");
-          }}
-        />
+    <nav
+      className={`nav z-100  h-20 w-full bg-primary-100 text-center sm:flex sm:flex-col ${
+        position
+          ? // "fixed"
+            ""
+          : ""
+      }`}
+    >
+      <div className="relative bg-primary-100">
+        <div
+          className="bg-primary-00 mt-1 flex w-full justify-center"
+          onMouseEnter={() => setDropDown(false)}
+        >
+          <Image
+            src="https://www.acquisition.com/hs-fs/hubfs/ACQ_Web_Global-NavLogo%203.png?width=554&height=52&name=ACQ_Web_Global-NavLogo%203.png"
+            alt="Acquisition.com logo"
+            width={300}
+            height={50}
+            className="mt-2"
+            loading="lazy"
+            onClick={() => {
+              void router.push("/the_firm/why_we_exist");
+            }}
+          />
+        </div>
+        <Mobile setDropDown={setDropDown} dropDown={dropDown} />
+        <Desktop setDropDown={setDropDown} dropDown={dropDown} />
       </div>
-      <Mobile setDropDown={setDropDown} dropDown={dropDown} />
-      <Desktop setDropDown={setDropDown} dropDown={dropDown} />
     </nav>
   );
 };
@@ -47,14 +72,14 @@ function SubNavButton(props: { parent: string; child: string }) {
   const childLower = child.toLowerCase().replace(/\s/g, "_");
 
   return (
-    <div className="border-l border-r border-t px-4 py-1 last:border-b hover:cursor-pointer">
-      <Link
-        href={`/${parentLower}/${childLower}`}
-        className="hover:text-primary-300 hover:underline"
-      >
+    <Link
+      href={`/${parentLower}/${childLower}`}
+      className="desktop-nav hover:text-primary-300 hover:underline"
+    >
+      <div className="border-l border-r border-t px-4 py-1 last:border-b hover:cursor-pointer">
         {child}
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
 
@@ -142,11 +167,17 @@ function Mobile(props: {
             <div
               className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
               onMouseOver={() => {
-                // if (!dropDown && dropDown !== "books") {
-                // setDropDown(false);
-                // } else return;
+                if (!dropDown && dropDown !== "books") {
+                  setDropDown(false);
+                } else return;
               }}
-              onClick={() => setDropDown("books")}
+              onClick={() => {
+                if (dropDown !== "books") {
+                  setDropDown("books");
+                } else {
+                  setDropDown(false);
+                }
+              }}
             >
               <div className="flex w-full justify-center">
                 <Link href="/books" onClick={() => setOpen(false)}>
@@ -189,11 +220,17 @@ function Mobile(props: {
             <div
               className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
               onMouseOver={() => {
-                // if (dropDown && dropDown !== "courses") {
-                // setDropDown(false);
-                // } else return;
+                if (dropDown && dropDown !== "courses") {
+                  setDropDown(false);
+                } else return;
               }}
-              onClick={() => setDropDown("courses")}
+              onClick={() => {
+                if (dropDown !== "courses") {
+                  setDropDown("courses");
+                } else {
+                  setDropDown(false);
+                }
+              }}
             >
               <div className="flex w-full justify-center">
                 <Link href="/courses" onClick={() => setOpen(false)}>
@@ -236,11 +273,17 @@ function Mobile(props: {
             <div
               className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
               onMouseOver={() => {
-                // if (dropDown && dropDown !== "partnership") {
-                // setDropDown(false);
-                // } else return;
+                if (dropDown && dropDown !== "partnership") {
+                  setDropDown(false);
+                } else return;
               }}
-              onClick={() => setDropDown("partnership")}
+              onClick={() => {
+                if (dropDown !== "partnership") {
+                  setDropDown("partnership");
+                } else {
+                  setDropDown(false);
+                }
+              }}
             >
               <div className="flex w-full justify-center">
                 <Link href="/partnership" onClick={() => setOpen(false)}>
@@ -283,14 +326,25 @@ function Mobile(props: {
             <div
               className="my-2 flex-1 whitespace-nowrap underline-offset-2 hover:underline"
               onMouseOver={() => {
-                // if (dropDown && dropDown !== "speaking") {
-                // setDropDown(false);
-                // } else return;
+                if (dropDown && dropDown !== "speaking") {
+                  setDropDown(false);
+                } else return;
               }}
-              onClick={() => setDropDown("speaking")}
+              onClick={() => {
+                if (dropDown !== "speaking") {
+                  setDropDown("speaking");
+                } else {
+                  setDropDown(false);
+                }
+              }}
             >
               <div className="flex w-full justify-center">
-                <Link href="/speaking" onClick={() => setOpen(false)}>
+                <Link
+                  href="/speaking"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
                   Speaking
                 </Link>
                 {speakingOptions.length !== 0 && (
@@ -331,11 +385,17 @@ function Mobile(props: {
               <div className="flex w-full justify-center">
                 <button
                   onMouseOver={() => {
-                    // if (dropDown && dropDown !== "the_firm") {
-                    // setDropDown(false);
-                    // } else return;
+                    if (dropDown && dropDown !== "the_firm") {
+                      setDropDown(false);
+                    } else return;
                   }}
-                  onClick={() => setDropDown("the_firm")}
+                  onClick={() => {
+                    if (dropDown !== "the_firm") {
+                      setDropDown("the_firm");
+                    } else {
+                      setDropDown(false);
+                    }
+                  }}
                 >
                   The Firm
                 </button>
@@ -377,11 +437,17 @@ function Mobile(props: {
               <div className="flex w-full justify-center">
                 <button
                   onMouseOver={() => {
-                    // if (dropDown && dropDown !== "the_firm") {
-                    // setDropDown(false);
-                    // } else return;
+                    if (dropDown && dropDown !== "careers") {
+                      setDropDown(false);
+                    } else return;
                   }}
-                  onClick={() => setDropDown("careers")}
+                  onClick={() => {
+                    if (dropDown !== "careers") {
+                      setDropDown("careers");
+                    } else {
+                      setDropDown(false);
+                    }
+                  }}
                 >
                   Careers
                 </button>

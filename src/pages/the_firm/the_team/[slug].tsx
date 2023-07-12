@@ -49,7 +49,7 @@ const TeamMemberBio: NextPageWithLayout = () => {
 
   if (member !== undefined) {
     return (
-      <div>
+      <div className="bg-texture">
         <div className="flex w-full flex-wrap justify-center bg-primary-200 px-8">
           {member.bannerImage !== null ? (
             <Image

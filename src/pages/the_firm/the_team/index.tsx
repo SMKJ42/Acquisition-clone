@@ -16,7 +16,7 @@ interface TeamMember {
 
 const TheTeam: NextPageWithLayout = () => {
   return (
-    <>
+    <div className="bg-texture">
       <div className="flex w-full flex-col items-center">
         <h2 className="m-4 mt-6 px-2 pb-4 text-center text-4xl font-extrabold">
           MEET OUR <span className="truncate">LEADERSHIP TEAM</span>
@@ -30,7 +30,7 @@ const TheTeam: NextPageWithLayout = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

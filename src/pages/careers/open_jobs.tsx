@@ -32,7 +32,7 @@ const openings = [
 
 const OpenJobs: NextPageWithLayout = () => {
   return (
-    <div>
+    <div className="bg-texture">
       <div className="bg-primary-100 text-center">
         <h1 className="px-4 pb-16 pt-8 text-3xl font-extrabold text-white sm:px-16 sm:text-5xl md:text-7xl">
           JOBS AT <br />
@@ -82,7 +82,7 @@ const OpenJobs: NextPageWithLayout = () => {
           </label>
         </div>
         <button
-          className="whitespace-nowrap rounded-lg bg-primary-100 px-4 py-2 text-white md:ml-4 md:mr-8"
+          className="whitespace-nowrap rounded-lg bg-primary-100 px-4 py-2 text-white hover:bg-primary-300 md:ml-4 md:mr-8"
           onClick={() => alert("not handled")}
         >
           Reset Filters
@@ -108,7 +108,7 @@ const OpenJobs: NextPageWithLayout = () => {
       <div className="flex flex-col items-center bg-primary-100 pb-10 pt-8">
         <h3 className="pb-4 text-3xl text-white">NO MATCH?</h3>
         <button
-          className="rounded-3xl border-[1px] border-primary-200 bg-white px-8 py-4 text-primary-200"
+          className="rounded-3xl border-[1px] border-primary-200 bg-white px-8 py-4 text-primary-200 hover:bg-gray-200"
           onClick={() => alert("not handled")}
         >
           Join Mozi Talent
@@ -131,7 +131,7 @@ function JobOpeningCard(props: {
       <p className="my-2 text-lg">{role}</p>
       <p className="my-2 text-lg">{location}</p>
       <button
-        className="mb-2 mt-4 rounded-xl bg-primary-200 px-4 py-2 text-white"
+        className="mb-2 mt-4 rounded-xl bg-primary-200 px-4 py-2 text-white hover:bg-primary-300"
         onClick={() => alert("not handled")}
       >
         Apply Now
