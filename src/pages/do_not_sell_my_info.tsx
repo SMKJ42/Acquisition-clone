@@ -41,7 +41,10 @@ const NotFountBoundary: NextPageWithLayout = () => {
             to remove yourself. You can also unsubscribe from our marketing
             lists by visiting the links beneath the form.
           </h2>
-          <form className="grid grid-cols-2">
+          <form
+            className="grid grid-cols-2"
+            onSubmit={() => alert("not handled")}
+          >
             <label className="w-1/2 text-start">
               <span className="w-full">First Name</span>
               <input
@@ -117,7 +120,7 @@ const NotFountBoundary: NextPageWithLayout = () => {
             <div className="col-span-2 pt-8">
               <button
                 type="submit"
-                className="rounded-2xl bg-primary-200 px-8 py-4 text-center text-white"
+                className="rounded-2xl bg-primary-200 px-8 py-4 text-center text-white hover:bg-primary-300"
               >
                 Submit
               </button>

@@ -20,9 +20,6 @@ export const PublicNavigation = (props: {
   const [position, cssPosition] = useState(true);
 
   //WHAT THE FFUFUUUU
-
-  console.log(router.pathname);
-
   useEffect(() => {
     switch (router.pathname) {
       case "/careers/our_culture":
