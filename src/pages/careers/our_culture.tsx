@@ -9,7 +9,7 @@ const OurCulture: NextPageWithLayout = () => {
   const [hoverItem, setHoverItem] = useState<string | null>(null);
 
   return (
-    <div className="">
+    <div className="bg-texture">
       <div className=" z-10 w-full bg-primary-100 text-center">
         <h1 className=" z-10 px-4 pb-16 pt-12 text-3xl font-extrabold text-white sm:px-16 sm:text-5xl md:text-7xl">
           LIFE AT <br />
