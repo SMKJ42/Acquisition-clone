@@ -132,38 +132,43 @@ export function JobsSlider() {
     >
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          <img
+          <Image
             src="https://www.acquisition.com/hs-fs/hubfs/Acquisition_September2022/we_are_remote-1.jpg?width=2352&height=1568&name=we_are_remote-1.jpg"
-            className="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 top-1/2 block w-full"
             alt="woman virtual meeting"
+            fill={true}
           />
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          <img
+          <Image
             src="https://www.acquisition.com/hs-fs/hubfs/Acquisition_September2022/we_work_our_asses_off-1.jpg?width=2352&height=1568&name=we_work_our_asses_off-1.jpg"
-            className="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 top-1/2 block w-full"
             alt="woman virtual meeting"
+            fill={true}
           />
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          <img
+          <Image
             src="https://www.acquisition.com/hs-fs/hubfs/Acquisition_September2022/we_love_what_we_do-1.jpg?width=2352&height=1568&name=we_love_what_we_do-1.jpg"
-            className="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 top-1/2 block w-full"
             alt="woman virtual meeting"
+            fill={true}
           />
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          <img
+          <Image
             src="https://www.acquisition.com/hs-fs/hubfs/Acquisition_September2022/we_keep_it_real-1.jpg?width=2352&height=1568&name=we_keep_it_real-1.jpg"
-            className="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 top-1/2 block w-full"
             alt="woman virtual meeting"
+            fill={true}
           />
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          <img
+          <Image
             src="https://www.acquisition.com/hs-fs/hubfs/Acquisition_September2022/ACQ_Website_LifeAtAcquisition-NeverSkipDessert2.jpg?width=2352&height=1568&name=ACQ_Website_LifeAtAcquisition-NeverSkipDessert2.jpg"
-            className="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 top-1/2 block w-full"
             alt="woman virtual meeting"
+            fill={true}
           />
         </div>
       </div>
