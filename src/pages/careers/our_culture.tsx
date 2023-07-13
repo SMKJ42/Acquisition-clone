@@ -3,13 +3,13 @@ import type { NextPageWithLayout } from "../_app";
 import { PublicLayout } from "~/components/layout/PublicLayout";
 import Image from "next/image";
 import { GreatPlaceToWork } from "~/components/shared/GreatPlaceToWork";
-import { PaginateJobs } from "~/components/careers/PaginateJobs";
+import { JobsSlider } from "~/components/careers/JobsSlider";
 
 const OurCulture: NextPageWithLayout = () => {
   const [hoverItem, setHoverItem] = useState<string | null>(null);
 
   return (
-    <div className="bg-texture">
+    <div className="">
       <div className=" z-10 w-full bg-primary-100 text-center">
         <h1 className=" z-10 px-4 pb-16 pt-12 text-3xl font-extrabold text-white sm:px-16 sm:text-5xl md:text-7xl">
           LIFE AT <br />
@@ -112,8 +112,8 @@ const OurCulture: NextPageWithLayout = () => {
           <span className="text-primary-200"> PERFECT FIT</span>?
         </h3>
       </div>
-      <div className="mx-8">
-        <PaginateJobs />
+      <div className="">
+        <JobsSlider />
       </div>
     </div>
   );

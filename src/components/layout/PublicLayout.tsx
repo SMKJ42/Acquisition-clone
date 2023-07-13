@@ -16,6 +16,10 @@ export const PublicLayout = ({ children }: { children: ReactNode }) => {
         <title>Acquisition.com</title>
         <meta name="Description" content={`Acquision.com ${page}`} />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css"
+          rel="stylesheet"
+        />
       </Head>
       <PublicNavigation dropDown={dropDown} setDropDown={setDropDown} />
       <main
