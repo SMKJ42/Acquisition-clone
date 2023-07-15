@@ -1,12 +1,12 @@
-import { type ReactElement, useState } from "react";
+import { type ReactElement } from "react";
 import type { NextPageWithLayout } from "../_app";
 import { PublicLayout } from "~/components/layout/PublicLayout";
 import { GreatPlaceToWork } from "~/components/shared/GreatPlaceToWork";
 import JobsSlider from "~/components/careers/JobsSlider";
+import ValuesCards from "~/components/careers/ValuesCards";
+import EmployeeTestimonials from "~/components/careers/EmployeeTestimonials";
 
 const OurCulture: NextPageWithLayout = () => {
-  const [hoverItem, setHoverItem] = useState<string | null>(null);
-
   return (
     <div className="bg-texture">
       <div className=" z-10 w-full bg-primary-100 text-center">
@@ -31,87 +31,9 @@ const OurCulture: NextPageWithLayout = () => {
           h-[350px] overflow-y-scroll bg-gray-200 bg-alex-laila-parallax bg-contain bg-fixed bg-center bg-no-repeat pl-[50%] lg:bg-[90%]"
         ></div>
       </div>
-      <div className="">
-        <div className="flex w-full flex-col py-12 text-center">
-          <h3 className="text-4xl font-extrabold">
-            VALUES <span className="text-primary-200">MATTER.</span>
-          </h3>
-          <p>Select each card below to reveal more information.</p>
-        </div>
-        <div className="grid grid-flow-row grid-cols-1 text-center lg:grid-cols-2 lg:grid-rows-grow-cards">
-          <div className="relative overflow-visible p-4 hover:h-[282px] hover:p-0">
-            <div
-              className="flex h-full min-h-[250px] w-full items-center justify-center px-8 py-8 font-bold text-primary-200 shadow-2xl "
-              onMouseEnter={() => {
-                setHoverItem("unimpeachable");
-              }}
-              onMouseLeave={() => {
-                setHoverItem(null);
-              }}
-            >
-              {hoverItem !== "unimpeachable" ? (
-                <span className="text-3xl sm:text-4xl md:text-5xl">
-                  UNIMPEACHABLE <br />
-                  CHARACTER
-                </span>
-              ) : (
-                <span className="text-xl">
-                  BE THE TYPE OF PERSON WITH WHOM PEOPLE ARE ALWAYS PROUD TO
-                  ASSOCIATE, PERSONALLY AND PROFESSIONALLY
-                </span>
-              )}
-            </div>
-          </div>
-          <div className="h-full  overflow-visible p-4 hover:h-[282px] hover:p-0 lg:row-span-2 lg:hover:h-[564px]">
-            <div
-              className="flex h-full min-h-[250px] w-full items-center justify-center bg-primary-100 px-8 py-8 font-bold text-white shadow-2xl "
-              onMouseEnter={() => {
-                setHoverItem("competitive");
-              }}
-              onMouseLeave={() => {
-                setHoverItem(null);
-              }}
-            >
-              {hoverItem !== "competitive" ? (
-                <span className="text-3xl sm:text-4xl md:text-5xl">
-                  COMPETITVE <br />
-                  GREATNESS
-                </span>
-              ) : (
-                <span className="text-xl">
-                  NOTHING GREAT CAN BE BUILT WITHOUT FEEDBACK; INTERNALLY OR
-                  EXTERNALLY
-                </span>
-              )}
-            </div>
-          </div>
-          <div className="overflow-visible p-4 hover:h-[282px] hover:p-0 ">
-            <div
-              className="flex h-full min-h-[250px] w-full items-center justify-center bg-primary-300 px-8 py-8 font-bold shadow-2xl"
-              onMouseEnter={() => {
-                setHoverItem("sincere");
-              }}
-              onMouseLeave={() => {
-                setHoverItem(null);
-              }}
-            >
-              {hoverItem !== "sincere" ? (
-                <span className="text-3xl sm:text-4xl md:text-5xl">
-                  SINCERE <br />
-                  CANDOR
-                </span>
-              ) : (
-                <span className="text-xl">
-                  BE AT YOUR BEST WHEN YOUR BEST IS NEEDED. YOU ENJOY A HARD
-                  CHALLEN
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+      <ValuesCards />
       <GreatPlaceToWork />
-      <div className="flex w-full py-16 text-center text-4xl font-extrabold">
+      <div className="flex w-full bg-white py-16 text-center text-4xl font-extrabold">
         <h3 className="w-full">
           ARE YOU A&nbsp;
           <span className="text-primary-200"> PERFECT FIT</span>?
@@ -120,6 +42,7 @@ const OurCulture: NextPageWithLayout = () => {
       <div className="jobs-slider h-72">
         <JobsSlider />
       </div>
+      <EmployeeTestimonials />
     </div>
   );
 };
