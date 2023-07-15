@@ -27,10 +27,10 @@ const JoinUs: NextPageWithLayout = () => {
         </h1>
         <p>Be first to see the newest career openings.</p>
       </div>
-      <div className="w-full bg-primary-100 p-8 sm:px-16">
-        <div className="bg-white pb-8 pt-16">
+      <div className="flex w-full justify-center bg-primary-100 p-8 sm:px-16">
+        <div className="flex flex-col items-center bg-white pb-8 pt-16 sm:w-[700px] lg:w-[900px]">
           <h2 className="text-center text-3xl font-extrabold">SIGN UP</h2>
-          <div className="flex justify-center bg-white py-8">
+          <div className="justify-cente flex py-8 ">
             <div className="h-[5px] w-[80px] bg-primary-200"></div>
           </div>
           <form

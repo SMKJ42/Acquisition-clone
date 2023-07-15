@@ -20,6 +20,14 @@ const config = {
   },
   images: {
     domains: ["files.jotform.com", "www.acquisition.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fast.wistia.com",
+        port: "",
+        pathname: "**",
+      },
+    ],
   },
 };
 

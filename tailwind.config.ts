@@ -20,7 +20,7 @@ export default {
           "url(https://www.acquisition.com/hubfs/Acquisition_September2022/Alex_and_Leila_Extended-1.png)",
       },
       gridTemplateColumns: {
-        "grow-cards": "2, minmax(250px, 1fr)",
+        "grow-cards": "repeat(2, minmax(250px, 1fr))",
       },
       gridTemplateRows: {
         "grow-cards": "2, 250px",

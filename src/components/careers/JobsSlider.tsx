@@ -45,6 +45,7 @@ export default function DefaultCarousel() {
             className="absolute left-1/2 top-1/2 block w-1/2"
             alt="woman virtual meeting"
             fill={true}
+            sizes="100vw"
           />
         </div>
         <h3 className="absolute mx-8 mt-8 flex w-full flex-col items-center justify-center text-3xl font-extrabold sm:text-4xl md:hidden md:text-5xl">
@@ -62,6 +63,7 @@ export default function DefaultCarousel() {
             className="absolute left-1/2 top-1/2 block w-1/2"
             alt="woman virtual meeting"
             fill={true}
+            sizes="100vw"
           />
         </div>
         <h3 className="absolute mx-8 mt-8 flex w-full flex-col items-center justify-center text-3xl font-extrabold text-white sm:text-4xl md:hidden md:text-5xl">
@@ -86,6 +88,7 @@ export default function DefaultCarousel() {
             className="absolute left-1/2 top-1/2 block w-1/2"
             alt="woman virtual meeting"
             fill={true}
+            sizes="100vw"
           />
         </div>
         <h3 className="absolute mx-8 mt-8 flex w-full flex-col items-center justify-center text-3xl font-extrabold text-white sm:text-4xl md:hidden md:text-5xl">
@@ -109,6 +112,7 @@ export default function DefaultCarousel() {
             className="absolute left-1/2 top-1/2 block w-1/2"
             alt="woman virtual meeting"
             fill={true}
+            sizes="100vw"
           />
         </div>
         <h3 className="absolute mx-8 mt-8 flex w-full flex-col items-center justify-center text-3xl font-extrabold sm:text-4xl md:hidden md:text-5xl">
@@ -129,6 +133,7 @@ export default function DefaultCarousel() {
             className="absolute left-1/2 top-1/2 block w-1/2"
             alt="woman virtual meeting"
             fill={true}
+            sizes="100vw"
           />
         </div>
       </div>
