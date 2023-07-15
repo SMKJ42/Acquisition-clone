@@ -39,7 +39,7 @@ const OurCulture: NextPageWithLayout = () => {
           <span className="text-primary-200"> PERFECT FIT</span>?
         </h3>
       </div>
-      <div className="jobs-slider h-72">
+      <div className="jobs-slider h-72 bg-white pb-16">
         <JobsSlider />
       </div>
       <EmployeeTestimonials />
