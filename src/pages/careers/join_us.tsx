@@ -22,7 +22,7 @@ const JoinUs: NextPageWithLayout = () => {
   return (
     <div className="bg-texture">
       <div className="w-full py-8 text-center">
-        <h1 className="text-5xl font-extrabold">
+        <h1 className="mx-8 text-5xl font-extrabold">
           JOIN <span className="text-primary-200">MOZI TALENT</span>
         </h1>
         <p>Be first to see the newest career openings.</p>
@@ -38,33 +38,56 @@ const JoinUs: NextPageWithLayout = () => {
               e.preventDefault();
               handleFormSubmit();
             }}
-            className="grid gap-6 p-4 sm:grid-cols-2"
+            className="grid grid-cols-1 gap-6 p-4 text-lg sm:grid-cols-2"
           >
-            <div className="flex flex-col">
-              <label className="flex justify-between">First Name *</label>
-              <input type="text" placeholder="First Name" required />
+            <div className="">
+              <label className="">First Name *</label>
+              <input
+                type="text"
+                placeholder="First Name"
+                required
+                className="w-full "
+              />
             </div>
-            <div className="flex flex-col">
-              <label className="flex justify-between">Last Name *</label>
-              <input type="text" placeholder="Last Name" required />
+            <div className="">
+              <label className="">Last Name *</label>
+              <input
+                type="text"
+                placeholder="Last Name"
+                required
+                className="w-full "
+              />
             </div>
-            <div className="flex flex-col">
-              <label className="flex justify-between">Phone *</label>
-              <input type="text" placeholder="Phone" required />
+            <div className="">
+              <label className="">Phone *</label>
+              <input
+                type="text"
+                placeholder="Phone"
+                required
+                className="w-full "
+              />
             </div>
-            <div className="flex flex-col">
-              <label className="flex justify-between">Email *</label>
-              <input type="text" placeholder="Email" required />
+            <div className="">
+              <label className="">Email *</label>
+              <input
+                type="text"
+                placeholder="Email"
+                required
+                className="w-full "
+              />
             </div>
-            <div className="flex flex-col  sm:col-span-2">
-              <label className="flex justify-between ">Video Link</label>
-              <input type="text" placeholder="https://example.com" required />
+            <div className=" sm:col-span-2">
+              <label className=" ">Video Link</label>
+              <input
+                type="text"
+                placeholder="https://example.com"
+                required
+                className="w-full "
+              />
             </div>
-            <div className="flex flex-col">
-              <label className="flex justify-between">
-                Skills & Expertise *
-              </label>
-              <select>
+            <div className="">
+              <label className="">Skills & Expertise *</label>
+              <select className="w-full ">
                 <option value={undefined}>Please Select</option>
                 <option value={"marketing"}>Marketing</option>{" "}
                 <option value={"sales"}>Sales</option>{" "}
@@ -82,11 +105,11 @@ const JoinUs: NextPageWithLayout = () => {
                 </option>
               </select>
             </div>
-            <div className="flex flex-col">
+            <div className="">
               <label className="flex justify-around">
                 Years of Experience *
               </label>
-              <select required>
+              <select required className="w-full ">
                 <option value={undefined}>Please Select</option>
                 <option value={"1_3"}>1-3 Years</option>
                 <option value={"3_5"}>3-5 Years</option>
@@ -100,12 +123,19 @@ const JoinUs: NextPageWithLayout = () => {
               <label>Resume/CV Upload *</label>
               <input type="file" required />
             </div>
-            <div className="flex flex-col items-center sm:col-span-2">
-              <label>Social Profile (LinkedIn, Facebook, etc.)</label>
-              <input type="text" placeholder="https://example.com" required />
+            <div className=" flex w-full flex-col sm:col-span-2">
+              <label className="w-full text-center">
+                Social Profile <br /> (LinkedIn, Facebook, etc.)
+              </label>
+              <input
+                type="text"
+                placeholder="https://example.com"
+                required
+                className="w-full "
+              />
             </div>
             <div></div>
-            <div className="flex justify-around sm:col-span-2">
+            <div className="flex justify-center sm:col-span-2">
               <button
                 type="submit"
                 className="rounded-xl bg-primary-100 px-8 py-4 text-white"
@@ -115,16 +145,18 @@ const JoinUs: NextPageWithLayout = () => {
             </div>
           </form>
         </div>
-        <div>
-          <h2>RECENT BLOG POSTS</h2>
-        </div>
-        <div>
-          {posts.map((post) => {
-            const { id } = post;
-            return <PostCard key={id} />;
-          })}
-          <button>See All Blog Posts</button>
-        </div>
+      </div>
+      <div className="bg-white py-8 text-center text-3xl font-extrabold ">
+        <h2>RECENT BLOG POSTS</h2>
+      </div>
+      <div className="w-full text-center ">
+        {posts.map((post) => {
+          const { id } = post;
+          return <PostCard key={id} />;
+        })}
+        <button className="my-8 rounded-2xl bg-primary-200 px-8 py-4 text-white hover:bg-primary-300">
+          See All Blog Posts
+        </button>
       </div>
     </div>
   );

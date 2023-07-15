@@ -16,47 +16,57 @@ export const PublicNavigation = (props: {
 }) => {
   const router = useRouter();
   const { dropDown, setDropDown } = props;
-
-  const [position, cssPosition] = useState(true);
-
-  //WHAT THE FFUFUUUU
-  useEffect(() => {
-    switch (router.pathname) {
-      case "/careers/our_culture":
-        cssPosition(false);
-      default:
-        cssPosition(true);
-    }
-    console.log(position);
-  }, [router]);
+  const [open, setOpen] = useState(false);
 
   return (
     <nav
-      className={`nav z-100  h-20 w-full bg-primary-100 text-center sm:flex sm:flex-col ${
-        position
-          ? // "fixed"
-            ""
-          : ""
-      }`}
+      className={`nav z-100  h-20 w-full bg-primary-100 text-center sm:flex sm:flex-col`}
     >
-      <div className="relative bg-primary-100">
+      <div className="">
         <div
-          className="bg-primary-00 mt-1 flex w-full justify-center"
+          className="bg-primary-00 flex w-full justify-center"
           onMouseEnter={() => setDropDown(false)}
         >
-          <Image
-            src="https://www.acquisition.com/hs-fs/hubfs/ACQ_Web_Global-NavLogo%203.png?width=554&height=52&name=ACQ_Web_Global-NavLogo%203.png"
-            alt="Acquisition.com logo"
-            width={300}
-            height={50}
-            className="mt-2"
-            loading="lazy"
-            onClick={() => {
-              void router.push("/the_firm/why_we_exist");
-            }}
-          />
+          <div className="flex w-full justify-center">
+            <Image
+              src="https://www.acquisition.com/hs-fs/hubfs/ACQ_Web_Global-NavLogo%203.png?width=554&height=52&name=ACQ_Web_Global-NavLogo%203.png"
+              alt="Acquisition.com logo"
+              width={250}
+              height={20}
+              className="max-h-[40px] w-auto pt-4"
+              loading="lazy"
+              onClick={() => {
+                void router.push("/the_firm/why_we_exist");
+              }}
+            />
+          </div>
+          {!open && (
+            <div className="mr-6 text-white sm:hidden">
+              <div onClick={() => setOpen(true)}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="h-12 w-10"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </div>
+            </div>
+          )}
         </div>
-        <Mobile setDropDown={setDropDown} dropDown={dropDown} />
+        <Mobile
+          setDropDown={setDropDown}
+          dropDown={dropDown}
+          open={open}
+          setOpen={setOpen}
+        />
         <Desktop setDropDown={setDropDown} dropDown={dropDown} />
       </div>
     </nav>
@@ -108,33 +118,13 @@ function MiniSubNavButton(props: {
 function Mobile(props: {
   setDropDown: React.Dispatch<React.SetStateAction<string | boolean>>;
   dropDown: string | boolean;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const { setDropDown, dropDown } = props;
-
-  const [open, setOpen] = useState(false);
+  const { setDropDown, dropDown, open, setOpen } = props;
 
   return (
-    <div className={`w-full sm:hidden ${!open ? "absolute top-0" : ""} `}>
-      {!open && (
-        <div className="flex w-full justify-end pr-8 text-white">
-          <div onClick={() => setOpen(true)}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="h-12 w-10"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </div>
-        </div>
-      )}
+    <div className={`w-fit sm:hidden`}>
       {open && (
         // <div className="absolute top-0 flex h-fit w-full justify-center bg-primary-200">
         <div className="absolute top-0 flex h-fit w-full justify-center bg-primary-200">

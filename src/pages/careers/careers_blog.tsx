@@ -3,22 +3,23 @@ import type { NextPageWithLayout } from "../_app";
 import { PublicLayout } from "~/components/layout/PublicLayout";
 import { useState } from "react";
 
-const posts = [{ id: "1" }];
+const posts = [{ id: "1", category: [""], src: "", alt: "" }];
 
 const CareersBlog: NextPageWithLayout = () => {
   const [filter, setFilter] = useState<string | null>(null);
 
   return (
     <div className="w-full bg-texture">
-      <div className="flex w-full flex-col items-center bg-primary-200 text-white">
-        <h1 className="pb-4 pt-8 text-4xl font-extrabold">
-          BE THE MOST IMPRESSIVE CANDIDATE
+      <div className="flex w-full flex-col items-center bg-primary-100 text-white">
+        <h1 className="pb-4 pt-8 text-center text-4xl font-extrabold">
+          BE THE MOST <br />
+          <span className="text-primary-200">IMPRESSIVE CANDIDATE</span>
         </h1>
         <p className="text-2xl font-bold text-primary-100">
           Know the good stuff first
         </p>
-        <div className="flex w-1/3 justify-around py-8">
-          <div className="rounded-full bg-primary-100 p-2">
+        <div className="flex w-1/3 justify-center py-8">
+          <div className="mr-4 rounded-full bg-primary-200 p-2 hover:bg-primary-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="2em"
@@ -29,7 +30,7 @@ const CareersBlog: NextPageWithLayout = () => {
               <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
             </svg>
           </div>
-          <div className="rounded-full bg-primary-100 p-2">
+          <div className="ml-4 rounded-full bg-primary-200 p-2 hover:bg-primary-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="2em"
@@ -42,37 +43,79 @@ const CareersBlog: NextPageWithLayout = () => {
           </div>
         </div>
       </div>
-      <div className="grid sm:grid-cols-2">
-        <h2 className="flex w-full justify-center sm:col-span-2">All Posts</h2>
-        <div className="flex w-full justify-center sm:col-span-2">
+      <div className="grid grid-cols-1 px-8 sm:grid-cols-2">
+        <h2 className="col-span-1 flex w-full justify-center pt-8 text-4xl font-extrabold sm:col-span-2">
+          All Posts
+        </h2>
+        <div className="flex w-full items-center justify-center py-8 sm:col-span-2">
           <div className="h-[5px] w-[80px] bg-primary-200 "></div>
         </div>
         <div className="flex flex-col sm:col-span-2">
-          <p className="w-full text-center">Filter by category</p>
-          <div className="flex w-full">
-            <button className="mx-4">Employee Experience</button>
-            <button className="">Culture</button>
-            <button className="">Talent Development</button>
-            <button className="">Interviewing</button>
-            <button className="">Skill Development</button>
-            <button className="">FeedBack</button>
-            <button className="">Hiring</button>
-            <button className="">Compensation</button>
-            <button className="">HiPo</button>
-            <button className="">Management</button>
+          <p className="w-full pb-4 text-center">Filter by category: </p>
+          <div className="flex w-full flex-wrap justify-center">
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              Employee Experience
+            </button>
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              Culture
+            </button>
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              Talent Development
+            </button>
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              Interviewing
+            </button>
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              Skill Development
+            </button>
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              FeedBack
+            </button>
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              Hiring
+            </button>
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              Compensation
+            </button>
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              HiPo
+            </button>
+            <button className="mx-2 my-1 rounded-md  bg-gray-400 px-2 font-light text-white">
+              Management
+            </button>
           </div>
         </div>
-        {posts.map((post) => {
-          return (
-            <div key={post.id} className="">
-              <h3>Post Title</h3>
-              <p>Post Date</p>
-              <p>Post Category</p>
-              <p>Post Excerpt</p>
-              <button>Read More</button>
-            </div>
-          );
-        })}
+        <div className="w-full py-8">
+          {posts.map((post) => {
+            const { category } = post;
+            return (
+              <div key={post.id} className="flex w-full flex-col">
+                <div className="flex w-full flex-col items-center">
+                  <h3 className="text-xl font-bold">Post Title</h3>
+                  <p className="font-light">Post Date</p>
+                </div>
+                <div className="w-full flex-row">
+                  {category.map((cat) => {
+                    return (
+                      <p
+                        key={cat}
+                        className="bg-primary-300 px-2 py-1 font-light"
+                      >
+                        {cat}
+                      </p>
+                    );
+                  })}
+                </div>
+                <p>Post Excerpt</p>
+                <div className="flex w-full justify-center">
+                  <button className="rounded-2xl bg-primary-200 px-4 py-2 text-white">
+                    Read Article
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
