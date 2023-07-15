@@ -77,8 +77,8 @@ const Speaking: NextPageWithLayout = () => {
                 required
               />
             </label>
-            <label className="mt-8 w-full text-center text-lg font-bold sm:col-span-2">
-              <span className=" w-full">
+            <label className="mt-8 w-full text-center text-lg  sm:col-span-2">
+              <span className=" w-full font-bold">
                 Business Description 1-3 Sentences
                 <br />
                 (who you help, what, how, how much) *
@@ -243,12 +243,15 @@ const Speaking: NextPageWithLayout = () => {
               </div>
             </section>
 
-            <div className="w-full sm:col-span-2">
+            <div className="w-full text-center sm:col-span-2">
               <label className="flex w-full flex-col items-center">
-                <span className="w-3/4 rounded-md border-[1px] border-primary-300 bg-gray-100 p-1 pb-2 text-lg font-bold ">
+                <span className="w-3/4  p-1 pb-2 text-lg font-bold ">
                   Day of Event *
                 </span>
-                <input type="date" />
+                <input
+                  type="date"
+                  className="rounded-md border-[1px]  border-primary-300 bg-gray-100"
+                />
               </label>
             </div>
 
