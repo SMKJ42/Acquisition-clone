@@ -1,12 +1,3 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import TheTeam from "./the_team/index";
 
-const TheFirm = () => {
-  const router = useRouter();
-  useEffect(() => {
-    return void router.push("/the_team");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-};
-
-export default TheFirm;
+export default TheTeam;
