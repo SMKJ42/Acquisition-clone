@@ -1,9 +1,8 @@
-import { ReactElement, useState } from "react";
+import { type ReactElement, useState } from "react";
 import type { NextPageWithLayout } from "../_app";
 import { PublicLayout } from "~/components/layout/PublicLayout";
-import Image from "next/image";
 import { GreatPlaceToWork } from "~/components/shared/GreatPlaceToWork";
-import { JobsSlider } from "~/components/careers/JobsSlider";
+import JobsSlider from "~/components/careers/JobsSlider";
 
 const OurCulture: NextPageWithLayout = () => {
   const [hoverItem, setHoverItem] = useState<string | null>(null);
@@ -112,7 +111,7 @@ const OurCulture: NextPageWithLayout = () => {
           <span className="text-primary-200"> PERFECT FIT</span>?
         </h3>
       </div>
-      <div className="">
+      <div className="jobs-slider h-72">
         <JobsSlider />
       </div>
     </div>
