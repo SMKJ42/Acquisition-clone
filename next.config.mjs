@@ -19,15 +19,7 @@ const config = {
     defaultLocale: "en",
   },
   images: {
-    domains: ["files.jotform.com", "www.acquisition.com"],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "fast.wistia.com",
-        port: "",
-        pathname: "**",
-      },
-    ],
+    domains: ["files.jotform.com", "www.acquisition.com", "fast.wistia.com"],
   },
 };
 
