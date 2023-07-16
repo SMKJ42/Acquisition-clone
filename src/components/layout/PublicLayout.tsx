@@ -1,20 +1,16 @@
 import Head from "next/head";
 import { PublicNavigation } from "./PublicNavigation";
-import { type ReactNode, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { type ReactNode, useState } from "react";
 import { Footer } from "./Footer";
 
 export const PublicLayout = ({ children }: { children: ReactNode }) => {
-  const router = useRouter();
-
   const [dropDown, setDropDown] = useState<string | boolean>(false);
-  const [page, setPage] = useState<string>("");
 
   return (
     <>
       <Head>
         <title>Acquisition.com</title>
-        <meta name="Description" content={`Acquision.com ${page}`} />
+        <meta name="Description" content={`Acquision.com`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PublicNavigation dropDown={dropDown} setDropDown={setDropDown} />
