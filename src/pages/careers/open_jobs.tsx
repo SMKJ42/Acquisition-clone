@@ -125,7 +125,7 @@ function JobOpeningCard(props: {
 }) {
   const { title, company, role, location } = props;
   return (
-    <div className="flex flex-col items-center rounded-lg bg-gray-100 p-4 text-center shadow-xl">
+    <div className="flex flex-col items-center rounded-lg bg-texture p-4 text-center shadow-xl">
       <h3 className="my-2 text-2xl font-bold">{title}</h3>
       <p className="my-2 text-lg">{company}</p>
       <p className="my-2 text-lg">{role}</p>

@@ -15,11 +15,11 @@ export const VideoThumbnails = () => {
             height={400}
             width={400}
             className=""
-            onClick={() => void router.push("/courses/start_here.png")}
+            onClick={() => void router.push("/courses/start_here")}
           />
         </div>
         <div className="text-large text-bold rounded-xl bg-primary-200 px-4 py-4 text-white">
-          <Link href="/courses/start_here.png">Start Here</Link>
+          <Link href="/courses/start_here">Start Here</Link>
         </div>
       </div>
       <div className="col-span-1 flex h-full flex-col items-center">
@@ -30,11 +30,11 @@ export const VideoThumbnails = () => {
             height={400}
             width={400}
             className=""
-            onClick={() => void router.push("/courses/picking_markets.png")}
+            onClick={() => void router.push("/courses/picking_markets")}
           />
         </div>
         <div className="text-large text-bold rounded-xl bg-primary-200 px-4 py-4 text-white">
-          <Link href="/courses/picking_markets.png">Picking Markets</Link>
+          <Link href="/courses/picking_markets">Picking Markets</Link>
         </div>
       </div>
       <div className="col-span-1 flex h-full flex-col items-center">
@@ -45,14 +45,12 @@ export const VideoThumbnails = () => {
             height={400}
             width={400}
             className=""
-            onClick={() => void router.push("/courses/charge_its_worth.png")}
+            onClick={() => void router.push("/courses/charge_its_worth")}
           />
         </div>
 
         <div className="text-large text-bold rounded-xl bg-primary-200 px-4 py-4 text-white">
-          <Link href="/courses/charge_its_worth.png">
-            Charge It&apos;s Worth
-          </Link>
+          <Link href="/courses/charge_its_worth">Charge It&apos;s Worth</Link>
         </div>
       </div>
       <div className="col-span-1 flex h-full flex-col items-center">
@@ -63,12 +61,12 @@ export const VideoThumbnails = () => {
             height={400}
             width={400}
             className=""
-            onClick={() => void router.push("/courses/the_value_equation.png")}
+            onClick={() => void router.push("/courses/the_value_equation")}
           />
         </div>
 
         <div className="text-large text-bold rounded-xl bg-primary-200 px-4 py-4 text-white">
-          <Link href="/courses/the_value_equation.png">The Value Equation</Link>
+          <Link href="/courses/the_value_equation">The Value Equation</Link>
         </div>
       </div>
       <div className="col-span-1 flex h-full flex-col items-center">
@@ -79,12 +77,12 @@ export const VideoThumbnails = () => {
             height={400}
             width={400}
             className=""
-            onClick={() => void router.push("/courses/offer_creation1.png")}
+            onClick={() => void router.push("/courses/offer_creation1")}
           />
         </div>
 
         <div className="text-large text-bold rounded-xl bg-primary-200 px-4 py-4 text-white">
-          <Link href="/courses/offer_creation1.png">Offer Creation Pt 1</Link>
+          <Link href="/courses/offer_creation1">Offer Creation Pt 1</Link>
         </div>
       </div>
       <div className="col-span-1 flex h-full flex-col items-center">
@@ -95,12 +93,12 @@ export const VideoThumbnails = () => {
             height={400}
             width={400}
             className=""
-            onClick={() => void router.push("/courses/offer_creation2.png")}
+            onClick={() => void router.push("/courses/offer_creation2")}
           />
         </div>
 
         <div className="text-large text-bold rounded-xl bg-primary-200 px-4 py-4 text-white">
-          <Link href="/courses/offer_creation2.png">Offer Creation Pt 2</Link>
+          <Link href="/courses/offer_creation2">Offer Creation Pt 2</Link>
         </div>
       </div>
       <div className="col-span-1 flex h-full flex-col items-center">
@@ -111,12 +109,12 @@ export const VideoThumbnails = () => {
             height={400}
             width={400}
             className=""
-            onClick={() => void router.push("/courses/bonuses.png")}
+            onClick={() => void router.push("/courses/bonuses")}
           />
         </div>
 
         <div className="text-large text-bold rounded-xl bg-primary-200 px-4 py-4 text-white">
-          <Link href="/courses/bonuses.png">Bonuses</Link>
+          <Link href="/courses/bonuses">Bonuses</Link>
         </div>
       </div>
       <div className="col-span-1 flex h-full flex-col items-center">
@@ -127,16 +125,12 @@ export const VideoThumbnails = () => {
             height={400}
             width={400}
             className=""
-            onClick={() =>
-              void router.push("/courses/scarcity_and_urgency.png")
-            }
+            onClick={() => void router.push("/courses/scarcity_and_urgency")}
           />
         </div>
 
         <div className="text-large text-bold rounded-xl bg-primary-200 px-4 py-4 text-white">
-          <Link href="/courses/scarcity_and_urgency.png">
-            Scarcity & Urgency
-          </Link>
+          <Link href="/courses/scarcity_and_urgency">Scarcity & Urgency</Link>
         </div>
       </div>
       <div className="col-span-1 flex h-full flex-col items-center">
@@ -147,12 +141,12 @@ export const VideoThumbnails = () => {
             height={400}
             width={400}
             className=""
-            onClick={() => void router.push("/courses/naming_products.png")}
+            onClick={() => void router.push("/courses/naming_products")}
           />
         </div>
 
         <div className="text-large text-bold rounded-xl bg-primary-200 px-4 py-4 text-white">
-          <Link href="/courses/naming_products.png">Naming Products</Link>
+          <Link href="/courses/naming_products">Naming Products</Link>
         </div>
       </div>
     </div>

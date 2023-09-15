@@ -1,9 +1,9 @@
-import { type ReactElement, useEffect, useState } from "react";
+import { type ReactElement, useEffect } from "react";
 import type { NextPageWithLayout } from "../_app";
 import { PublicLayout } from "~/components/layout/PublicLayout";
 import Image from "next/image";
 import { VideoThumbnails } from "~/components/courses/VideoThumbnails";
-import { NewBookRegistration } from "~/components/courses/NewBookRegistration";
+import { EmailButton } from "~/components/courses/EmailButton";
 
 const Courses: NextPageWithLayout = () => {
   useEffect(() => {
@@ -59,25 +59,6 @@ const Courses: NextPageWithLayout = () => {
 
 Courses.getLayout = function getLayout(page: ReactElement) {
   return <PublicLayout>{page}</PublicLayout>;
-};
-
-const EmailButton = () => {
-  const [notifyModal, setNotifyModal] = useState<boolean>(false);
-
-  return (
-    <>
-      <button
-        className="my-4 w-fit rounded-2xl bg-primary-200 px-8 py-2 text-2xl text-white hover:bg-primary-300"
-        onClick={() => {
-          console.log("setting modal true");
-          setNotifyModal(true);
-        }}
-      >
-        Notify me
-      </button>
-      {notifyModal && <NewBookRegistration setNotifyModal={setNotifyModal} />}
-    </>
-  );
 };
 
 export default Courses;
