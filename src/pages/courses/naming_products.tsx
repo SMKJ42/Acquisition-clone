@@ -5,7 +5,7 @@ import Image from "next/image";
 import { VideoThumbnails } from "~/components/courses/VideoThumbnails";
 import { EmailButton } from "~/components/courses/EmailButton";
 
-const NampingProducts: NextPageWithLayout = () => {
+const NamingProducts: NextPageWithLayout = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://fast.wistia.com/embed/medias/1zbz8khw5x.jsonp";
@@ -57,8 +57,8 @@ const NampingProducts: NextPageWithLayout = () => {
   );
 };
 
-NampingProducts.getLayout = function getLayout(page: ReactElement) {
+NamingProducts.getLayout = function getLayout(page: ReactElement) {
   return <PublicLayout>{page}</PublicLayout>;
 };
 
-export default NampingProducts;
+export default NamingProducts;
